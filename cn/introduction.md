@@ -8,7 +8,7 @@
 
 学习一门框架既令人生畏，又令人兴奋。为了提供平稳的学习体验，我们尝试为Laravel创建了清晰简明的文档。下面列出了推荐的阅读顺序：
 
-- [安装](/docs/installation) and [配置](/docs/configuration)
+- [安装](/docs/installation) 和 [配置](/docs/configuration)
 - [路由](/docs/routing)
 - [请求与输入](/docs/requests)
 - [视图与响应](/docs/responses)
