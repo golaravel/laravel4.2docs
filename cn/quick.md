@@ -12,7 +12,7 @@
 
 ### 通过 Laravel Installer
 
-首先，下载[Laravel installer PHAR 归档]。为了放便，重名文件为`laravel`并且移动到`/usr/local/bin`。一旦安装完成，使用简单的`laravel new`命令将会在特定目录下创建一个全新的laravel环境。例如，`laravel new blog`将创建`blog`目录，里面包含有所有laravel安装及依赖。该方法比通过Composer安装要快。
+首先，下载[Laravel installer PHAR 归档]。为了方便，重名文件为`laravel`并且移动到`/usr/local/bin`目录。一旦安装完成，使用简单的`laravel new`命令将会在特定目录下创建一个全新的laravel环境。例如，`laravel new blog`将创建`blog`目录，里面包含有所有laravel安装及依赖。该方法比通过Composer安装要快。
 
 ### 通过 Composer
 
