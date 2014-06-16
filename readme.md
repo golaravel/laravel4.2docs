@@ -15,10 +15,10 @@
     - [x] introduction.md
 
 - 何文祥
-	- [] quick.md
+	- [ ] quick.md
 
 - 孤客漫步
-	- [] releases.md
+	- [ ] releases.md
 
 
 ## 版权协议
