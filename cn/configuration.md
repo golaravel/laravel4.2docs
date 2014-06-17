@@ -3,7 +3,7 @@
 - [引言](#introduction)
 - [环境配置](#environment-configuration)
 - [供应者配置](#provider-configuration)
-- [Protecting Sensitive 配置](#protecting-sensitive-configuration)
+- [敏感信息保护配置](#protecting-sensitive-configuration)
 - [维护模式](#maintenance-mode)
 
 <a name="introduction"></a>
@@ -88,14 +88,14 @@ Laravel 框架的所有配置文件都存储于 `app/config` 目录。每个文�
 <a name="provider-configuration"></a>
 ### 供应者配置
 
-When using 环境 配置, you may want to "append" 环境 [service 供应者s](/docs/ioc#service-供应者s) to your primary `app` 配置 file. However, if you try this, you will notice the 环境 `app` 供应者s are overriding the 供应者s in your primary `app` 配置 file. To force the 供应者s to be appended, use the `append_config` helper method in your 环境 `app` 配置 file:
+当使用环境配置，你可能想要 "追加" 环境 [服务供应者](/docs/ioc#service-providers) 到你的基础 `app` 配置文件中。然而，如果你尝试这么做，你需要注意这个环境 `app` 供应者将会完全覆盖你的基础 `app` 配置文件中的值。要强制追加供应者，需要在你的环境 `app` 配置文件中使用 `append_config` 辅助函数：
 
-	'供应者s' => append_config(array(
-		'LocalOnlyService供应者',
+	'providers' => append_config(array(
+		'LocalOnlyServiceProvider',
 	))
 
 <a name="protecting-sensitive-configuration"></a>
-## Protecting Sensitive 配置
+## 敏感信息保护配置
 
 For "real" applications, it is advisable to keep all of your sensitive 配置 out of your 配置 files. Things such as database passwords, Stripe API keys, and encryption keys should be kept out of your 配置 files whenever possible. So, where should we place them? Thankfully, Laravel provides a very simple solution to protecting these types of 配置 items using "dot" files.
 
