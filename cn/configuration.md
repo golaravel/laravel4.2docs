@@ -46,47 +46,47 @@ Laravel 框架的所有配置文件都存储于 `app/config` 目录。每个文�
 
 > **注意：** 不要使用 'testing' 作为环境名称。这是为单元测试预留的。
 
-Notice that you do not have to specify _every_ option that is in the base 配置 file, but only the options you wish to override. The 环境 配置 files will "cascade" over the base files.
+注意，你不必指定基础配置文件中的 _每一个_ 选项，仅需指定你希望覆盖的选项。环境配置文件将 "叠加" 在基础配置文件之上。
 
-Next, we need to instruct the framework how to determine which 环境 it is running in. The default 环境 is always `production`. However, you may setup other 环境s within the `bootstrap/start.php` file at the root of your installation. In this file you will find an `$app->detect环境` call. The array passed to this method is used to determine the current 环境. You may add other 环境s and machine names to the array as needed.
+接着，我们需要告知框架如何判定自己运行于哪个环境中。默认的环境始终是 `production`。然而，你可以在安装程序的根目录下 `bootstrap/start.php` 文件中设置其他环境。在这个文件中你将找到一个 `$app->detectEnvironment` 的调用。向这个方法传入的数组用于确定当前环境。必要时你可以增加其他环境和机器名。
 
     <?php
 
-    $env = $app->detect环境(array(
+    $env = $app->detectEnvironment(array(
 
         'local' => array('your-machine-name'),
 
     ));
 
-In this example, 'local' is the name of the 环境 and 'your-machine-name' is the hostname of your server. On Linux and Mac, you may determine your hostname using the `hostname` terminal command.
+在这个例子中，'local' 是环境名称而 'your-machine-name' 是你本地服务器的主机名。在 Linux 和 Mac 上，你可以使用 `hostname` 终端命令来确定你的主机名。
 
-If you need more flexible 环境 detection, you may pass a `Closure` to the `detect环境` method, allowing you to implement 环境 detection however you wish:
+如果你需要更灵活的环境检测，你可以通过向 `detectEnvironment` 方法传入一个 `匿名函数`，这允许你按照自己的方式执行环境检测：
 
-	$env = $app->detect环境(function()
+	$env = $app->detectEnvironment(function()
 	{
 		return $_SERVER['MY_LARAVEL_ENV'];
 	});
 
 #### Accessing The Current Application 环境
 
-You may access the current application 环境 via the `环境` method:
+You may access the current application 环境 via the `environment` method:
 
-	$环境 = App::环境();
+	$environment = App::environment();
 
-You may also pass arguments to the `环境` method to check if the 环境 matches a given value:
+You may also pass arguments to the `environment` method to check if the 环境 matches a given value:
 
-	if (App::环境('local'))
+	if (App::environment('local'))
 	{
 		// The 环境 is local
 	}
 
-	if (App::环境('local', 'staging'))
+	if (App::environment('local', 'staging'))
 	{
 		// The 环境 is either local OR staging...
 	}
 
 <a name="provider-configuration"></a>
-### 供应者 配置
+### 供应者配置
 
 When using 环境 配置, you may want to "append" 环境 [service 供应者s](/docs/ioc#service-供应者s) to your primary `app` 配置 file. However, if you try this, you will notice the 环境 `app` 供应者s are overriding the 供应者s in your primary `app` 配置 file. To force the 供应者s to be appended, use the `append_config` helper method in your 环境 `app` 配置 file:
 
