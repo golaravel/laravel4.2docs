@@ -67,22 +67,22 @@ Laravel 框架的所有配置文件都存储于 `app/config` 目录。每个文�
 		return $_SERVER['MY_LARAVEL_ENV'];
 	});
 
-#### Accessing The Current Application 环境
+#### 访问当前的应用环境
 
-You may access the current application 环境 via the `environment` method:
+你可以通过 `environment` 方法访问当前的应用环境：
 
 	$environment = App::environment();
 
-You may also pass arguments to the `environment` method to check if the 环境 matches a given value:
+你也可以通过向 `environment` 方法传递参数来检测环境是否与给定的值匹配：
 
 	if (App::environment('local'))
 	{
-		// The 环境 is local
+		// 当前为 local 运行环境
 	}
 
 	if (App::environment('local', 'staging'))
 	{
-		// The 环境 is either local OR staging...
+		// 当前为 local 或 staging 运行环境
 	}
 
 <a name="provider-configuration"></a>
