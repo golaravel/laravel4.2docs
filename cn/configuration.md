@@ -1,8 +1,8 @@
 # 配置
 
 - [引言](#introduction)
-- [环境 配置](#environment-configuration)
-- [供应者 配置](#provider-configuration)
+- [环境配置](#environment-configuration)
+- [供应者配置](#provider-configuration)
 - [Protecting Sensitive 配置](#protecting-sensitive-configuration)
 - [维护模式](#maintenance-mode)
 
@@ -32,9 +32,9 @@ Laravel 框架的所有配置文件都存储于 `app/config` 目录。每个文�
 <a name="environment-configuration"></a>
 ## 环境配置
 
-It is often helpful to have different 配置 values based on the 环境 the application is running in. For example, you may wish to use a different cache driver on your local development machine than on the production server. It is easy to accomplish this using 环境 based 配置.
+基于应用程序的运行环境拥有不同配置值通常是非常有益的。例如，相对于生产服务器你希望在你本地开发设备上使用一个不同的缓存驱动。使用基于环境的配置可以很容易的做到这点。
 
-Simply create a folder within the `config` directory that matches your 环境 name, such as `local`. Next, create the 配置 files you wish to override and specify the options for that 环境. For example, to override the cache driver for the local 环境, you would create a `cache.php` file in `app/config/local` with the following content:
+在 `config` 目录里简单的创建一个与你的环境同名的文件夹，比如 `local`。接着，创建你希望在这个环境中指定选项被覆盖的配置文件。例如，在 local 环境下覆盖缓存驱动，你将要在 `app/config/local` 里创建一个 `cache.php` 文件并包含以下内容：
 
 	<?php
 
@@ -44,7 +44,7 @@ Simply create a folder within the `config` directory that matches your 环境 na
 
 	);
 
-> **Note:** Do not use 'testing' as an 环境 name. This is reserved for unit testing.
+> **注意：** 不要使用 'testing' 作为环境名称。这是为单元测试预留的。
 
 Notice that you do not have to specify _every_ option that is in the base 配置 file, but only the options you wish to override. The 环境 配置 files will "cascade" over the base files.
 
