@@ -9,25 +9,25 @@
 <a name="introduction"></a>
 ## 引言
 
-Laravel 框架的所有配置文件都存储于 `app/config` 目录。每个文件中的每个选项Each option in every file is documented, so feel free to look through the files and get familiar with the options available to you.
+Laravel 框架的所有配置文件都存储于 `app/config` 目录。每个文件中的每个选项都做了详细的记录，以便随时翻阅文件，熟悉提供给你的选项。
 
-Sometimes you may need to access 配置 values at run-time. You may do so using the `Config` class:
+有时你需要在程序执行阶段访问配置的值。你可以使用 `Config` 类：
 
-#### Accessing A 配置 Value
+#### 访问一个配置的值
 
 	Config::get('app.timezone');
 
-You may also specify a default value to return if the 配置 option does not exist:
+你也可以指定一个默认值，如果配置选项不存在它将被返回：
 
 	$timezone = Config::get('app.timezone', 'UTC');
 
-#### Setting A 配置 Value
+#### 设置一个配置的值
 
-Notice that "dot" style syntax may be used to access values in the various files. You may also set 配置 values at run-time:
+注意“点”语法风格可以用于访问不同文件里的值，你也可以在程序执行阶段设置配置的值：
 
 	Config::set('database.default', 'sqlite');
 
-配置 values that are set at run-time are only set for the current request, and will not be carried over to subsequent requests.
+在程序执行阶段设置的配置的值仅作用于当前请求，并不会延续到后续请求中。
 
 <a name="environment-configuration"></a>
 ## 环境配置
