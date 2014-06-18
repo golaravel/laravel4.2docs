@@ -113,9 +113,9 @@ Laravel 框架的所有配置文件都存储于 `app/config` 目录。每个文�
 
 	'key' => $_ENV['TEST_STRIPE_KEY']
 
-Be sure to add the `.env.local.php` file to your `.gitignore` file. This will allow other developers on your team to create their own local 环境 配置, as well as hide your sensitive 配置 items from source control.
+确保在你的 `.gitignore` 文件中增加了对 `.env.local.php` 文件的忽略规则。这将允许你团队的其他开发者创建他们自己的本地环境配置，以及从源头隐藏你的敏感配置项。
 
-Now, on your production server, create a `.env.php` file in your project root that contains the corresponding values for your production 环境. Like the `.env.local.php` file, the production `.env.php` file should never be included in source control.
+现在，在你的生产服务器上，你项目的根目录里创建一个 `.env.php` 文件，包含你生产环境所对应的值。就像 `.env.local.php` 文件，生产环境 `.env.php` 文件不应该被包含在源码中。
 
 > **Note:** You may create a file for each 环境 supported by your application. For example, the `development` 环境 will load the `.env.development.php` file if it exists.
 
