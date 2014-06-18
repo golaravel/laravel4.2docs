@@ -109,7 +109,7 @@ Laravel 框架的所有配置文件都存储于 `app/config` 目录。每个文�
 
 	);
 
-All of the key-value pairs returned by this file will automatically be available via the `$_ENV` and `$_SERVER` PHP "superglobals". You may now reference these globals from within your 配置 files:
+这个文件中所有返回的键值对，将会自动通过 `$_ENV` 和 `$_SERVER` PHP "超全局变量" 变为可用。现在你可以在你的配置文件中引用这些全局变量：
 
 	'key' => $_ENV['TEST_STRIPE_KEY']
 
