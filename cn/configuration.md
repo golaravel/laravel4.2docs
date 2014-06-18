@@ -97,9 +97,9 @@ Laravel 框架的所有配置文件都存储于 `app/config` 目录。每个文�
 <a name="protecting-sensitive-configuration"></a>
 ## 敏感信息保护配置
 
-For "real" applications, it is advisable to keep all of your sensitive 配置 out of your 配置 files. Things such as database passwords, Stripe API keys, and encryption keys should be kept out of your 配置 files whenever possible. So, where should we place them? Thankfully, Laravel provides a very simple solution to protecting these types of 配置 items using "dot" files.
+对于 "真实" 的应用程序，保持你所有的敏感配置信息位于配置文件之外，这是明智的。诸如数据库密码，第三方 API 密钥，加密密钥等尽可能的放置于配置文件之外。所以，要放在哪里呢？谢天谢地，Laravel 提供了一个非常简单的方案来保护这些配置项，使用 "点" 风格的文件。
 
-First, [configure your application](/docs/配置#环境-配置) to recognize your machine as being in the `local` 环境. Next, create a `.env.local.php` file within the root of your project, which is usually the same directory that contains your `composer.json` file. The `.env.local.php` should return an array of key-value pairs, much like a typical Laravel 配置 file:
+首先，[设置你的应用程序](/docs/configuration#environment-configuration) 识别你的机器是在 `local` 环境下。接着，在你项目的根目录创建一个 `.env.local.php` 文件，这通常与包含 `composer.json` 文件的目录相同。这个 `.env.local.php` 必须返回一个键值对数组，就像一个典型的 Laravel 配置文件：
 
 	<?php
 
