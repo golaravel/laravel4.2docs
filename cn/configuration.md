@@ -117,30 +117,30 @@ Laravel 框架的所有配置文件都存储于 `app/config` 目录。每个文�
 
 现在，在你的生产服务器上，你项目的根目录里创建一个 `.env.php` 文件，包含你生产环境所对应的值。就像 `.env.local.php` 文件，生产环境 `.env.php` 文件不应该被包含在源码中。
 
-> **Note:** You may create a file for each 环境 supported by your application. For example, the `development` 环境 will load the `.env.development.php` file if it exists.
+> **注意：** 你可以为每一个应用程序支持的环境创建一个文件。例如，在 `development` 环境下将载入 `.env.development.php` 文件，如果它存在的话。
 
 <a name="maintenance-mode"></a>
 ## 维护模式
 
-When your application is in 维护模式, a custom view will be displayed for all routes into your application. This makes it easy to "disable" your application while it is updating or when you are performing maintenance. A call to the `App::down` method is already present in your `app/start/global.php` file. The response from this method will be sent to users when your application is in 维护模式.
+当你的应用程序处于维护模式中，所有进入到你应用程序的路由都将显示一个自定义的视图。这使得当你的应用程序更新或进行维护时，可以很容易的“禁用”你的应用程序。在你的 `app/start/global.php` 文件中已经准备了一个 `App::down` 方法的调用。当你的应用程序处于维护模式中时，该方法的响应将发送给用户。
 
-To enable 维护模式, simply execute the `down` Artisan command:
+要启用维护模式，可以简单的执行 `down` Artisan 命令：
 
 	php artisan down
 
-To disable 维护模式, use the `up` command:
+要禁用维护模式，则使用 `up` 命令：
 
 	php artisan up
 
-To show a custom view when your application is in 维护模式, you may add something like the following to your application's `app/start/global.php` file:
+当你的应用程序处于维护模式时，若需显示一个自定义视图，你可以在应用程序的 `app/start/global.php` 文件中添加如下代码：
 
 	App::down(function()
 	{
 		return Response::view('maintenance', array(), 503);
 	});
 
-If the Closure passed to the `down` method returns `NULL`, 维护模式 will be ignored for that request.
+如果传递给 `down` 方法的闭包返回 `NULL`，那么在此次请求中将忽略维护模式。
 
-### 维护模式 & Queues
+### 维护模式 & 队列
 
-While your application is in 维护模式, no [queue jobs](/docs/queues) will be handled. The jobs will continue to be handled as normal once the application is out of 维护模式.
+在你的应用程序处于维护模式期间，不会有 [队列工作](/docs/queues) 被处理。一旦应用程序退出维护模式，这些工作将继续正常处理。
