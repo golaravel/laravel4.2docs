@@ -2,7 +2,7 @@
 
 - [引言](#introduction)
 - [环境配置](#environment-configuration)
-- [供应者配置](#provider-configuration)
+- [提供者配置](#provider-configuration)
 - [敏感信息保护配置](#protecting-sensitive-configuration)
 - [维护模式](#maintenance-mode)
 
@@ -86,9 +86,9 @@ Laravel 框架的所有配置文件都存储于 `app/config` 目录。每个文�
 	}
 
 <a name="provider-configuration"></a>
-### 供应者配置
+### 提供者配置
 
-当使用环境配置，你可能想要 "追加" 环境 [服务供应者](/docs/ioc#service-providers) 到你的基础 `app` 配置文件中。然而，如果你尝试这么做，你需要注意这个环境 `app` 供应者将会完全覆盖你的基础 `app` 配置文件中的值。要强制追加供应者，需要在你的环境 `app` 配置文件中使用 `append_config` 辅助函数：
+当使用环境配置，你可能想要 "追加" 环境 [服务提供者](/docs/ioc#service-providers) 到你的基础 `app` 配置文件中。然而，如果你尝试这么做，你需要注意这个环境 `app` 提供者将会完全覆盖你的基础 `app` 配置文件中的值。要强制追加提供者，需要在你的环境 `app` 配置文件中使用 `append_config` 辅助函数：
 
 	'providers' => append_config(array(
 		'LocalOnlyServiceProvider',
@@ -122,7 +122,7 @@ Laravel 框架的所有配置文件都存储于 `app/config` 目录。每个文�
 <a name="maintenance-mode"></a>
 ## 维护模式
 
-当你的应用程序处于维护模式中，所有进入到你应用程序的路由都将显示一个自定义的视图。这使得当你的应用程序更新或进行维护时，可以很容易的“禁用”你的应用程序。在你的 `app/start/global.php` 文件中已经准备了一个 `App::down` 方法的调用。当你的应用程序处于维护模式中时，该方法的响应将发送给用户。
+当你的应用程序处于维护模式中，所有进入到你应用程序的路由都将显示一个自定义的视图。这使得当你的应用程序更新或进行维护时，可以很容易的 "禁用" 你的应用程序。在你的 `app/start/global.php` 文件中已经准备了一个 `App::down` 方法的调用。当你的应用程序处于维护模式中时，该方法的响应将发送给用户。
 
 要启用维护模式，可以简单的执行 `down` Artisan 命令：
 
