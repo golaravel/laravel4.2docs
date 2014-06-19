@@ -1,4 +1,4 @@
-# °æ±¾ËµÃ÷
+# ç‰ˆæœ¬è¯´æ˜
 
 - [Laravel 4.2](#laravel-4.2)
 - [Laravel 4.1](#laravel-4.1)
@@ -6,51 +6,51 @@
 <a name="laravel-4.2"></a>
 ## Laravel 4.2
 
-ÔÚÒ»¸ö4.2°æ±¾µÄ°²×°Ä¿Â¼ÏÂ£¬Í¨¹ıÔËĞĞÃüÁî¡°php artisan changes¡±À´»ñµÃ´Ë°æ±¾ÍêÕûµÄ±ä¸üÁĞ±í, Ò²¿ÉÒÔ²é¿´GithubÉÏµÄ±ä¸üÎÄ¼ş(https://github.com/laravel/framework/blob/4.2/src/Illuminate/Foundation/changes.json)¡£ These notes only cover the major enhancements and changes for the release.
+åœ¨ä¸€ä¸ª4.2ç‰ˆæœ¬çš„å®‰è£…ç›®å½•ä¸‹ï¼Œé€šè¿‡è¿è¡Œå‘½ä»¤â€œphp artisan changesâ€æ¥è·å¾—æ­¤ç‰ˆæœ¬å®Œæ•´çš„å˜æ›´åˆ—è¡¨, ä¹Ÿå¯ä»¥æŸ¥çœ‹Githubä¸Šçš„å˜æ›´æ–‡ä»¶(https://github.com/laravel/framework/blob/4.2/src/Illuminate/Foundation/changes.json)ã€‚ These notes only cover the major enhancements and changes for the release.
 
-> **×¢Òâ:** ÔÚ4.2°æ±¾µÄ·¢²¼ÖÜÆÚÖĞ, ºÜ¶àĞ¡µÄbugĞŞ¸´ºÍ¹¦ÄÜ¸Ä½ø±»ºÏ²¢½øÁËLaravel 4.1µÄ¸÷¸ö·¢²¼°æ±¾ÖĞ¡£ ËùÒÔ£¬Ò²Ò»¶¨Òª¼ì²éLaravel 4.1µÄ±ä¸üÁĞ±í£¡
+> **æ³¨æ„:** åœ¨4.2ç‰ˆæœ¬çš„å‘å¸ƒå‘¨æœŸä¸­, å¾ˆå¤šå°çš„bugä¿®å¤å’ŒåŠŸèƒ½æ”¹è¿›è¢«åˆå¹¶è¿›äº†Laravel 4.1çš„å„ä¸ªå‘å¸ƒç‰ˆæœ¬ä¸­ã€‚ æ‰€ä»¥ï¼Œä¹Ÿä¸€å®šè¦æ£€æŸ¥Laravel 4.1çš„å˜æ›´åˆ—è¡¨ï¼
 
-### PHP 5.4 Îª×îµÍ°æ±¾ÒªÇó
+### PHP 5.4 ä¸ºæœ€ä½ç‰ˆæœ¬è¦æ±‚
 
-Laravel 4.2 ÒªÇó PHP 5.4 »ò¸ü¸ß°æ±¾. ÕâÖÖPHP°æ±¾µÄÉı¼¶ĞèÇóÊ¹µÃÎÒÃÇÄÜ¹»Ê¹ÓÃPHPµÄĞÂÌØĞÔ£¬ÀıÈç£¬Îª[Laravel Cashier](/docs/billing)µÈ¹¤¾ßÌá¹©µÄ¸ü¾ß±íÏÖÁ¦µÄ½Ó¿Ú¡£ ÓëPHP 5.3Ïà±È£¬PHP 5.4 ÔÚËÙ¶ÈºÍÖ´ĞĞĞ§ÂÊÉÏÒ²ÓĞÏÔÖøµÄÌá¸ß¡£
+Laravel 4.2 è¦æ±‚ PHP 5.4 æˆ–æ›´é«˜ç‰ˆæœ¬. è¿™ç§PHPç‰ˆæœ¬çš„å‡çº§éœ€æ±‚ä½¿å¾—æˆ‘ä»¬èƒ½å¤Ÿä½¿ç”¨PHPçš„æ–°ç‰¹æ€§ï¼Œä¾‹å¦‚ï¼Œä¸º[Laravel Cashier](/docs/billing)ç­‰å·¥å…·æä¾›çš„æ›´å…·è¡¨ç°åŠ›çš„æ¥å£ã€‚ ä¸PHP 5.3ç›¸æ¯”ï¼ŒPHP 5.4 åœ¨é€Ÿåº¦å’Œæ‰§è¡Œæ•ˆç‡ä¸Šä¹Ÿæœ‰æ˜¾è‘—çš„æé«˜ã€‚
 
 ### Laravel Forge
 
-Laravel Forge, ÊÇÒ»¸öĞÂµÄ²¢»ùÓÚwebµÄÓ¦ÓÃ³ÌĞò£¬ËüÌá¹©Ò»ÖÖ¼òµ¥µÄ·½Ê½À´´´½¨ºÍ¹ÜÀíÄã×Ô¼ºÔÆ¶ËµÄPHP·şÎñ£¬ÕâĞ©·şÎñ°üÀ¨Linode¡¢ DigitalOcean¡¢ Rackspace¡¡ºÍ Amazon EC2¡£ Ö§³Ö×Ô¶¯»¯ÅäÖÃNginx£¬ ·ÃÎÊSSH key, Cron job ×Ô¶¯»¯, Í¨¹ı NewRelic »ò Papertrail½øĞĞµÄ·şÎñ¼à¿Ø, "Push To Deploy", ÅäÖÃLaravel¶ÓÁĞ¹¤ÈË, »¹ÓĞ, ForgeÌá¹©×î¼òµ¥ÇÒ×î¾­¼ÃµÄ·½Ê½À´ÔËĞĞÄãµÄËùÓĞLaravelÓ¦ÓÃ³ÌĞò¡£
+Laravel Forge, æ˜¯ä¸€ä¸ªæ–°çš„å¹¶åŸºäºwebçš„åº”ç”¨ç¨‹åºï¼Œå®ƒæä¾›ä¸€ç§ç®€å•çš„æ–¹å¼æ¥åˆ›å»ºå’Œç®¡ç†ä½ è‡ªå·±äº‘ç«¯çš„PHPæœåŠ¡ï¼Œè¿™äº›æœåŠ¡åŒ…æ‹¬Linodeã€ DigitalOceanã€ Rackspaceã€€å’Œ Amazon EC2ã€‚ æ”¯æŒè‡ªåŠ¨åŒ–é…ç½®Nginxï¼Œ è®¿é—®SSH key, Cron job è‡ªåŠ¨åŒ–, é€šè¿‡ NewRelic æˆ– Papertrailè¿›è¡Œçš„æœåŠ¡ç›‘æ§, "Push To Deploy", é…ç½®Laravelé˜Ÿåˆ—å·¥äºº, è¿˜æœ‰, Forgeæä¾›æœ€ç®€å•ä¸”æœ€ç»æµçš„æ–¹å¼æ¥è¿è¡Œä½ çš„æ‰€æœ‰Laravelåº”ç”¨ç¨‹åºã€‚
 
-Ä¬ÈÏÇé¿öÏÂ£¬Laravel 4.2°²×°Ä¿Â¼ÏÂµÄÎÄ¼ş`app/config/database.php`ÊÇÓÃÀ´ÅäÖÃForgeµÄ, Ê¹µÃĞÂµÄÓ¦ÓÃÄÜ¸ü·½±ãµÄ²¿Êğµ½Õâ¸öÆ½Ì¨ÉÏÀ´¡£
+é»˜è®¤æƒ…å†µä¸‹ï¼ŒLaravel 4.2å®‰è£…ç›®å½•ä¸‹çš„æ–‡ä»¶`app/config/database.php`æ˜¯ç”¨æ¥é…ç½®Forgeçš„, ä½¿å¾—æ–°çš„åº”ç”¨èƒ½æ›´æ–¹ä¾¿çš„éƒ¨ç½²åˆ°è¿™ä¸ªå¹³å°ä¸Šæ¥ã€‚
 
-ÔÚForgeµÄ¹Ù·½ÍøÕ¾(https://forge.laravel.com)ÉÏ£¬¿ÉÒÔÕÒµ½¸ü¶àµÄ¹ØÓÚLaravel ForgeµÄĞÅÏ¢¡£
+åœ¨Forgeçš„å®˜æ–¹ç½‘ç«™(https://forge.laravel.com)ä¸Šï¼Œå¯ä»¥æ‰¾åˆ°æ›´å¤šçš„å…³äºLaravel Forgeçš„ä¿¡æ¯ã€‚
 
 ### Laravel Homestead
 
-Laravel HomesteadÊÇÒ»¸ö¹Ù·½µÄVagrant»·¾³£¬Ëü±»ÓÃÀ´¿ª·¢Ç¿½¡µÄLaravelºÍPHPÓ¦ÓÃ³ÌĞò¡£ÔÚÏä×Ó±»´ò°üÅÉ·¢Ö®Ç°£¬Ïä×Ó¹©Ó¦ĞèÇóµÄ¾ø´ó²¿·Ö»á±»´¦Àí£¬ÔÊĞíÏä×Ó¼«Æä¿ìËÙµÄÆô¶¯¡£ Homestead°üÀ¨Nginx 1.6¡¢PHP 5.5.12¡¢MySQL¡¢Postgres¡¢Redis¡¢Memcached¡¢Beanstalk¡¢Node¡¢Gulp¡¢GruntºÍBower¡£Homestaed°üº¬Ò»¸ö¼òµ¥µÄÅäÖÃÎÄ¼ş¡°Homestead.yaml¡±£¬ËüÄÜÔÚµ¥¸öÏä×ÓÀï¹ÜÀí¶à¸öLaravelÓ¦ÓÃ³ÌĞò.
+Laravel Homesteadæ˜¯ä¸€ä¸ªå®˜æ–¹çš„Vagrantç¯å¢ƒï¼Œå®ƒè¢«ç”¨æ¥å¼€å‘å¼ºå¥çš„Laravelå’ŒPHPåº”ç”¨ç¨‹åºã€‚åœ¨ç®±å­è¢«æ‰“åŒ…æ´¾å‘ä¹‹å‰ï¼Œç®±å­ä¾›åº”éœ€æ±‚çš„ç»å¤§éƒ¨åˆ†ä¼šè¢«å¤„ç†ï¼Œå…è®¸ç®±å­æå…¶å¿«é€Ÿçš„å¯åŠ¨ã€‚ HomesteadåŒ…æ‹¬Nginx 1.6ã€PHP 5.5.12ã€MySQLã€Postgresã€Redisã€Memcachedã€Beanstalkã€Nodeã€Gulpã€Gruntå’ŒBowerã€‚HomestaedåŒ…å«ä¸€ä¸ªç®€å•çš„é…ç½®æ–‡ä»¶â€œHomestead.yamlâ€ï¼Œå®ƒèƒ½åœ¨å•ä¸ªç®±å­é‡Œç®¡ç†å¤šä¸ªLaravelåº”ç”¨ç¨‹åº.
 
-ÏÖÔÚ£¬Ä¬ÈÏµÄLaravel 4.2°²×°Ä¿Â¼°üº¬Ò»¸öÅäÖÃÎÄ¼ş¡°app/config/local/database.php¡±£¬ËüÊÇÓÃÀ´ÅäÖÃÊ¹ÓÃÏä×ÓÒÔÍâµÄHomesteadÊı¾İ¿âµÄ, ÕâÊ¹µÃLaravel³õÊ¼»¯°²×°Ä¿Â¼ºÍÅäÖÃ¸ü¼Ó·½±ã.
+ç°åœ¨ï¼Œé»˜è®¤çš„Laravel 4.2å®‰è£…ç›®å½•åŒ…å«ä¸€ä¸ªé…ç½®æ–‡ä»¶â€œapp/config/local/database.phpâ€ï¼Œå®ƒæ˜¯ç”¨æ¥é…ç½®ä½¿ç”¨ç®±å­ä»¥å¤–çš„Homesteadæ•°æ®åº“çš„, è¿™ä½¿å¾—Laravelåˆå§‹åŒ–å®‰è£…ç›®å½•å’Œé…ç½®æ›´åŠ æ–¹ä¾¿.
 
-¹Ù·½ÎÄµµÒÑ¾­°üÀ¨HomesteadÎÄµµ(/docs/homestead)¡£
+å®˜æ–¹æ–‡æ¡£å·²ç»åŒ…æ‹¬Homesteadæ–‡æ¡£(/docs/homestead)ã€‚
 
-### Laravel ³öÄÉ
+### Laravel å‡ºçº³
 
-Laravel ³öÄÉÊÇÒ»¸ö¼òµ¥µÄ¡¢¸»ÓÚ±íÏÖÁ¦µÄ¿â£¬ËüÓÃÀ´¹ÜÀíÌõÂëµÄ¶©ÔÄ¼Æ·Ñ¡£Ëæ×ÅLaravel 4.2µÄÒıÈë£¬¾¡¹Ü°²×°×é¼ş±¾ÉíÈÔÈ»ÊÇ¿ÉÑ¡µÄ£¬µ«ÊÇÎÒÃÇÔÚLaravelÖ÷ÎÄµµÀï°üº¬ÁËCashierÎÄµµ¡£ Õâ¸ö°æ±¾µÄCashierĞŞ¸´ÁËºÜ¶àbug, Ö§³Ö¶à±ÒÖÖ, ²¢¼æÈİ×îĞÂµÄÌõÂëAPI¡£
+Laravel å‡ºçº³æ˜¯ä¸€ä¸ªç®€å•çš„ã€å¯Œäºè¡¨ç°åŠ›çš„åº“ï¼Œå®ƒç”¨æ¥ç®¡ç†æ¡ç çš„è®¢é˜…è®¡è´¹ã€‚éšç€Laravel 4.2çš„å¼•å…¥ï¼Œå°½ç®¡å®‰è£…ç»„ä»¶æœ¬èº«ä»ç„¶æ˜¯å¯é€‰çš„ï¼Œä½†æ˜¯æˆ‘ä»¬åœ¨Laravelä¸»æ–‡æ¡£é‡ŒåŒ…å«äº†Cashieræ–‡æ¡£ã€‚ è¿™ä¸ªç‰ˆæœ¬çš„Cashierä¿®å¤äº†å¾ˆå¤šbug, æ”¯æŒå¤šå¸ç§, å¹¶å…¼å®¹æœ€æ–°çš„æ¡ç APIã€‚
 
-### ÊØ»¤½ø³Ì¶ÓÁĞ¹¤ÈË
+### å®ˆæŠ¤è¿›ç¨‹é˜Ÿåˆ—å·¥äºº
 
-ArtisanµÄ¡°queue:work¡±ÃüÁîÏÖÔÚÖ§³Ö¡°--daemon¡±Ñ¡Ïî£¬ËüÓÃÀ´Æô¶¯Ò»¸ö¡°ÊØ»¤½ø³ÌÄ£Ê½¡±µÄ¹¤ÈË£¬ Õâ¸öÄ£Ê½Ê¹µÃ¹¤ÈËÔÚ²»ĞèÒªÖØÆô¿ò¼ÜµÄÇé¿öÏÂ¼ÌĞø¹¤×÷¡£ Õâ»áÏÔÖøµÄ¼õÉÙCPUµÄÊ¹ÓÃÂÊ£¬Æä´ú¼ÛÖ»ÊÇÊ¹µÃÓ¦ÓÃ³ÌĞòµÄ²¿Êğ¹ı³ÌÉÔÏÔ¸´ÔÓ¡£
+Artisançš„â€œqueue:workâ€å‘½ä»¤ç°åœ¨æ”¯æŒâ€œ--daemonâ€é€‰é¡¹ï¼Œå®ƒç”¨æ¥å¯åŠ¨ä¸€ä¸ªâ€œå®ˆæŠ¤è¿›ç¨‹æ¨¡å¼â€çš„å·¥äººï¼Œ è¿™ä¸ªæ¨¡å¼ä½¿å¾—å·¥äººåœ¨ä¸éœ€è¦é‡å¯æ¡†æ¶çš„æƒ…å†µä¸‹ç»§ç»­å·¥ä½œã€‚ è¿™ä¼šæ˜¾è‘—çš„å‡å°‘CPUçš„ä½¿ç”¨ç‡ï¼Œå…¶ä»£ä»·åªæ˜¯ä½¿å¾—åº”ç”¨ç¨‹åºçš„éƒ¨ç½²è¿‡ç¨‹ç¨æ˜¾å¤æ‚ã€‚
 
-ÔÚ¶ÓÁĞÎÄµµ£¨/docs/queue#daemon-queue-workers£©ÀïÄÜÕÒµ½¸ü¶àµÄ¶ÓÁĞ¹¤ÈËÏà¹ØµÄĞÅÏ¢¡£
+åœ¨é˜Ÿåˆ—æ–‡æ¡£ï¼ˆ/docs/queue#daemon-queue-workersï¼‰é‡Œèƒ½æ‰¾åˆ°æ›´å¤šçš„é˜Ÿåˆ—å·¥äººç›¸å…³çš„ä¿¡æ¯ã€‚
 
-### ÓÊ¼ş½Ó¿ÚÇı¶¯³ÌĞò
+### é‚®ä»¶æ¥å£é©±åŠ¨ç¨‹åº
 
-Laravel 4.2Îª¡°ÓÊ¼ş¡±¹¦ÄÜÒıÈëÁËĞÂµÄMailgunºÍMandrill½Ó¿ÚÇı¶¯³ÌĞò¡£¶ÔºÜ¶àÓ¦ÓÃ³ÌĞòÀ´Ëµ£¬±ÈÆğSMTP·½Ê½£¬´Ë½Ó¿ÚÌá¹©ÁËÒ»ÖÖ¸ü¿ìºÍ¸ü¿É¿¿·¢ËÍµç×ÓÓÊ¼şµÄ·½·¨¡£ĞÂµÄÇı¶¯³ÌĞò²ÉÓÃGuzzle 4 HTTP¿â¡£
+Laravel 4.2ä¸ºâ€œé‚®ä»¶â€åŠŸèƒ½å¼•å…¥äº†æ–°çš„Mailgunå’ŒMandrillæ¥å£é©±åŠ¨ç¨‹åºã€‚å¯¹å¾ˆå¤šåº”ç”¨ç¨‹åºæ¥è¯´ï¼Œæ¯”èµ·SMTPæ–¹å¼ï¼Œæ­¤æ¥å£æä¾›äº†ä¸€ç§æ›´å¿«å’Œæ›´å¯é å‘é€ç”µå­é‚®ä»¶çš„æ–¹æ³•ã€‚æ–°çš„é©±åŠ¨ç¨‹åºé‡‡ç”¨Guzzle 4 HTTPåº“ã€‚
 
-### ÈíÉ¾³ıÌØĞÔ
+### è½¯åˆ é™¤ç‰¹æ€§
 
-Ò»ÖÖÎª¡°ÈíÉ¾³ı¡±ºÍÆäËü¡°È«¾Ö·¶Î§¡±¶øÉúµÄ¸ü¸É¾»µÄ¼Ü¹¹Í¨¹ıPHP 5.4µÄÌØĞÔ±»ÒıÈë½øÀ´¡£ÕâÖÖĞÂ¼Ü¹¹¿¼ÂÇµ½ÁË¸ü¼òµ¥µÄ¹¹½¨È«¾ÖÌØĞÔµÈ¹¦ÄÜ£¬ ºÍÒ»¸ö¸ü¸É¾»µÄ¿ò¼Ü±¾ÉíµÄ¹Ø×¢µã·ÖÀë¡£
+ä¸€ç§ä¸ºâ€œè½¯åˆ é™¤â€å’Œå…¶å®ƒâ€œå…¨å±€èŒƒå›´â€è€Œç”Ÿçš„æ›´å¹²å‡€çš„æ¶æ„é€šè¿‡PHP 5.4çš„ç‰¹æ€§è¢«å¼•å…¥è¿›æ¥ã€‚è¿™ç§æ–°æ¶æ„è€ƒè™‘åˆ°äº†æ›´ç®€å•çš„æ„å»ºå…¨å±€ç‰¹æ€§ç­‰åŠŸèƒ½ï¼Œ å’Œä¸€ä¸ªæ›´å¹²å‡€çš„æ¡†æ¶æœ¬èº«çš„å…³æ³¨ç‚¹åˆ†ç¦»ã€‚
 
-ÔÚÎÄµµ£¨/docs/eloquent#soft-deleting£©ÀïÄÜÕÒµ½¸ü¶àµÄ¹ØÓÚ¡°ÈíÉ¾³ıÌØĞÔ¡±µÄĞÅÏ¢¡£
+åœ¨æ–‡æ¡£ï¼ˆ/docs/eloquent#soft-deletingï¼‰é‡Œèƒ½æ‰¾åˆ°æ›´å¤šçš„å…³äºâ€œè½¯åˆ é™¤ç‰¹æ€§â€çš„ä¿¡æ¯ã€‚
 
-### ·½±ãµÄÈÏÖ¤ ºÍ ÌáĞÑÌØĞÔ
+### æ–¹ä¾¿çš„è®¤è¯ å’Œ æé†’ç‰¹æ€§
 
 The default Laravel 4.2 installation now uses simple traits for including the needed properties for the authentication and password reminder user interfaces. This provides a much cleaner default `User` model file out of the box.
 
@@ -65,7 +65,7 @@ In production, destructive migration operations will now ask for confirmation. C
 <a name="laravel-4.1"></a>
 ## Laravel 4.1
 
-### È«²¿±ä¸üÁĞ±í
+### å…¨éƒ¨å˜æ›´åˆ—è¡¨
 
 The full change list for this release by running the `php artisan changes` command from a 4.1 installation, or by [viewing the change file on Github](https://github.com/laravel/framework/blob/4.1/src/Illuminate/Foundation/changes.json). These notes only cover the major enhancements and changes for the release.
 
