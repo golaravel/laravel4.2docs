@@ -52,15 +52,15 @@ Laravel 4.2为“邮件”功能引入了新的Mailgun和Mandrill接口驱动程
 
 ### 方便的认证 和 提醒特性
 
-The default Laravel 4.2 installation now uses simple traits for including the needed properties for the authentication and password reminder user interfaces. This provides a much cleaner default `User` model file out of the box.
+现在，Laravel 4.2的安装目录默认使用简单的特性来包含认证和密码提醒用户接口所需要的属性。这提供了一个更干净的默认的箱子之外的“用户”模型文件。
 
-### "Simple Paginate"
+### “简单分页”
 
-A new `simplePaginate` method was added to the query and Eloquent builder which allows for more efficient queries when using simple "Next" and "Previous" links in your pagination view.
+一个新方法“simplePaginate”被加入查询和Eloquent构建器里，当你的分页页面里使用简单的“上一个”和“下一个”链接时，使用此方法查询就会更高效。
 
-### Migration Confirmation
+### 迁移确认
 
-In production, destructive migration operations will now ask for confirmation. Commands may be forced to run without any prompts using the `--force` command.
+现在，在生产中的破坏性操作将被要求确认。使用“--force”选项的迁移命令可以强制执行而不会有任何提示。
 
 <a name="laravel-4.1"></a>
 ## Laravel 4.1
@@ -77,7 +77,7 @@ In production, destructive migration operations will now ask for confirmation. C
 
 ### Boris In Tinker
 
-The `php artisan tinker` command now utilizes the [Boris REPL](https://github.com/d11wtq/boris) if your system supports it. The `readline` and `pcntl` PHP extensions must be installed to use this feature. If you do not have these extensions, the shell from 4.0 will be used.
+命令“php artisan tinker”使用的是Boris REPL（https://github.com/d11wtq/boris）首先你的系统得支持Boris REPL。要使用这个特性必须安装PHP扩展“readline”和“pcntl”。如果你没有这两个扩展，将使用4.0版本的shell.
 
 ### Eloquent改进点
 
