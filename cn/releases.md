@@ -6,13 +6,13 @@
 <a name="laravel-4.2"></a>
 ## Laravel 4.2
 
-在一个4.2版本的安装目录下，通过运行命令“php artisan changes”来获得此版本完整的变更列表, 也可以查看Github上的变更文件(https://github.com/laravel/framework/blob/4.2/src/Illuminate/Foundation/changes.json)。 These notes only cover the major enhancements and changes for the release.
+通过在4.2版本的安装目录下运行命令“php artisan changes”来获得此版本完整的变更列表, 也可以查看Github上的变更文件(https://github.com/laravel/framework/blob/4.2/src/Illuminate/Foundation/changes.json)。 这些更改记录只包含当前版本主要的功能改进和变更。
 
-> **注意:** 在4.2版本的发布周期中, 很多小的bug修复和功能改进被合并进了Laravel 4.1的各个发布版本中。 所以，也一定要检查Laravel 4.1的变更列表！
+> **注意:** 在4.2版本的发布周期中，很多小的bug修复和功能改进被合并进了Laravel 4.1的各个发布版本中。所以，也一定要检查Laravel 4.1的变更列表！
 
 ### PHP 5.4 为最低版本要求
 
-Laravel 4.2 要求 PHP 5.4 或更高版本. 这种PHP版本的升级需求使得我们能够使用PHP的新特性，例如，为[Laravel Cashier](/docs/billing)等工具提供的更具表现力的接口。 与PHP 5.3相比，PHP 5.4 在速度和执行效率上也有显著的提高。
+Laravel 4.2 要求 PHP 5.4 或更高版本. 这种PHP版本的升级需求使得我们能够使用PHP的新特性，例如，为Laravel Cashier(/docs/billing)等工具提供的更具表现力的接口。 与PHP 5.3相比，PHP 5.4 在速度和执行效率上也有显著的提高。
 
 ### Laravel Forge
 
@@ -32,7 +32,7 @@ Laravel Homestead是一个官方的Vagrant环境，它被用来开发强健的La
 
 ### Laravel 出纳
 
-Laravel 出纳是一个简单的、富于表现力的库，它用来管理条码的订阅计费。随着Laravel 4.2的引入，尽管安装组件本身仍然是可选的，但是我们在Laravel主文档里包含了Cashier文档。 这个版本的Cashier修复了很多bug, 支持多币种, 并兼容最新的条码API。
+Laravel 出纳是一个简单的、富于表现力的库，它用来管理条形码的订阅计费。随着Laravel 4.2的引入，尽管安装组件本身仍然是可选的，但是我们在Laravel主文档里包含了Cashier文档。 这个版本的Cashier修复了很多bug, 支持多币种, 并兼容最新的条形码API。
 
 ### 守护进程队列工人
 
@@ -67,52 +67,52 @@ In production, destructive migration operations will now ask for confirmation. C
 
 ### 全部变更列表
 
-The full change list for this release by running the `php artisan changes` command from a 4.1 installation, or by [viewing the change file on Github](https://github.com/laravel/framework/blob/4.1/src/Illuminate/Foundation/changes.json). These notes only cover the major enhancements and changes for the release.
+通过在4.1版本的安装目录下运行命令“php artisan changes”来获得此版本完整的变更列表, 也可以查看Github上的变更文件(https://github.com/laravel/framework/blob/4.1/src/Illuminate/Foundation/changes.json)。 这些更改记录只包含当前版本主要的功能改进和变更。
 
-### New SSH Component
+### 新SSH组件
 
-An entirely new `SSH` component has been introduced with this release. This feature allows you to easily SSH into remote servers and run commands. To learn more, consult the [SSH component documentation](/docs/ssh).
+一个全新的“SSH”组件被引入到此版本中。其特性允许你很容易的SSH到远程服务器并运行命令。想了解更多信息，请查阅SSH组件文档（/docs/ssh）。
 
-The new `php artisan tail` command utilizes the new SSH component. For more information, consult the `tail` [command documentation](http://laravel.com/docs/ssh#tailing-remote-logs).
+新的“php artisan tail”命令使用了新SSH组件。更多信息，请查阅“tail”命令文档（http://laravel.com/docs/ssh#tailing-remote-logs）。
 
 ### Boris In Tinker
 
 The `php artisan tinker` command now utilizes the [Boris REPL](https://github.com/d11wtq/boris) if your system supports it. The `readline` and `pcntl` PHP extensions must be installed to use this feature. If you do not have these extensions, the shell from 4.0 will be used.
 
-### Eloquent Improvements
+### Eloquent改进点
 
-A new `hasManyThrough` relationship has been added to Eloquent. To learn how to use it, consult the [Eloquent documentation](/docs/eloquent#has-many-through).
+一种新的“hasManyThrough”关系已经被加入到Eloquent里。要学习怎样使用，请查阅Eloquent文档（/docs/eloquent#has-many-through）。
 
-A new `whereHas` method has also been introduced to allow [retrieving models based on relationship constraints](/docs/eloquent#querying-relations).
+一个新方法“whereHas”也已经被引入，此方法允许基于关系约束的索引模型，相关文档（/docs/eloquent#querying-relations）。
 
-### Database Read / Write Connections
+### 数据库读写连接
 
-Automatic handling of separate read / write connections is now available throughout the database layer, including the query builder and Eloquent. For more information, consult [the documentation](/docs/database#read-write-connections).
+在数据库层有可供使用的自动处理单独读写的连接，包括队列构建器和Eloquent。 更多相关信息，请查阅文档（/docs/database#read-write-connections）。
 
-### Queue Priority
+### 队列优先权
 
-Queue priorities are now supported by passing a comma-delimited list to the `queue:listen` command.
+现在支持通过传递给命令“queue:listen”一组以逗号分隔的列表来设定队列的优先级。
 
-### Failed Queue Job Handling
+### 失败的队列工作处理
 
-The queue facilities now include automatic handling of failed jobs when using the new `--tries` switch on `queue:listen`. More information on handling failed jobs can be found in the [queue documentation](/docs/queues#failed-jobs).
+现在，在命令“queue:listen”中使用“--tries”选项时，队列功能会自动处理失败的工作。在队列文档（/docs/queues#failed-jobs）里可以找到处理失败工作的更多信息。
 
-### Cache Tags
+### 缓存标记
 
-Cache "sections" have been superseded by "tags". Cache tags allow you to assign multiple "tags" to a cache item, and flush all items assigned to a single tag. More information on using cache tags may be found in the [cache documentation](/docs/cache#cache-tags).
+缓存章节（sections）已经被标记（tags）取代。缓存标记允许你把多个标记赋值给一个缓存项，也允许把所有的缓存项赋值给一个标记。在缓存文档（/docs/cache#cache-tags）里可以找到使用缓存标记相关的更多信息。
 
-### Flexible Password Reminders
+### 灵活的密码提醒
 
-The password reminder engine has been changed to provide greater developer flexibility when validating passwords, flashing status messages to the session, etc. For more information on using the enhanced password reminder engine, [consult the documentation](/docs/security#password-reminders-and-reset).
+密码提醒引擎已经被改成当验证密码的时候为开发者提供很大的灵活性，引擎会闪存状态信息到会话里，等等。有关使用增强的密码提醒的更多信息，请查阅文档（/docs/security#password-reminders-and-reset）。
 
-### Improved Routing Engine
+### 改善的路由引擎
 
-Laravel 4.1 features a totally re-written routing layer. The API is the same; however, registering routes is a full 100% faster compared to 4.0. The entire engine has been greatly simplified, and the dependency on Symfony Routing has been minimized to the compiling of route expressions.
+Laravel 4.1以完全重写的路由层为特色。虽然接口是相同的，但是，路由注册比4.0版本要快100%。整个引擎被大大的简化了，而且依赖于Symfony的路由被最小化到路由表达式的编译里了。
 
-### Improved Session Engine
+### 改善的会话引擎
 
-With this release, we're also introducing an entirely new session engine. Similar to the routing improvements, the new session layer is leaner and faster. We are no longer using Symfony's (and therefore PHP's) session handling facilities, and are using a custom solution that is simpler and easier to maintain.
+在这个版本中，我们也引入了一个全新的会话引擎。 类似于路由的改进，新的会话层更简洁更快。我们不再使用Symfony（PHP的）会话处理功能， 而是使用一种更简单更容易维护的定制的解决方案。
 
 ### Doctrine DBAL
 
-If you are using the `renameColumn` function in your migrations, you will need to add the `doctrine/dbal` dependency to your `composer.json` file. This package is no longer included in Laravel by default.
+如果你在迁移（migrations）中用到了“renameColumn”方法，你需要在“composer.json”文件中添加“doctrine/dbal”依赖。这个包不再默认包含在Laravel中。
