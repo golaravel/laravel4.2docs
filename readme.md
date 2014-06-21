@@ -20,7 +20,7 @@
     - [ ] quick.md
 
 - 孤客漫步
-    - [ ] releases.md
+    - [x] releases.md
 
 - 成武
     - [x] configuration.md
