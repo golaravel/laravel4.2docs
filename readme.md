@@ -21,6 +21,7 @@
 
 - 孤客漫步
     - [x] releases.md
+    - [ ] upgrade.md
 
 - 成武
     - [x] configuration.md
