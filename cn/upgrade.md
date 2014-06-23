@@ -20,9 +20,9 @@ Laravel 4.2需要PHP 5.4.0或更高版本。
 
 这个设置可以用来控制Laravel加密功能使用默认密钥。
 
-### Soft Deleting Models Now Use Traits
+### 软删除模型现在的使用特性
 
-如果你正在使用软删除模型，“softDeletes”属性已经被移除了。现在你应该使用“SoftDeletingTrait”属性，像下面这样：
+如果你正在使用软删除模型，“softDeletes”属性已经被删除了。现在你应该使用“SoftDeletingTrait”属性，像下面这样：
 
 	use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
@@ -46,27 +46,27 @@ Laravel 4.2需要PHP 5.4.0或更高版本。
 
 ### 分页呈现时的额外参数
 
-如果你扩展了“Illuminate\Pagination\Presenter”类，它的抽象方法“getPageLinkWrapper”已经被改变了，添加了“ref”参数：
+如果你扩展了“Illuminate\Pagination\Presenter”类，它的抽象方法“getPageLinkWrapper”的签名已经被改变了，添加了“ref”参数：
 
 	abstract public function getPageLinkWrapper($url, $page, $rel = null);
 
 <a name="upgrade-4.1.29"></a>
 ## 从小于等于4.1.x升级到4.1.29 
 
-Laravel 4.1.29改善了所有的数据库驱动程序的列引用。当模型“不”使用“fillable”属性时，它保护您的应用程序免受一些mass assignment漏洞。 如果你在模型上使用了“fillable”属性来防止mass assignemnt漏洞，你的应用程序就是不易受攻击的。然而，如果你正在使用“guarded”，同时传递了一个用户控制的数组给“update”或“save”类型的函数，你应该立即升级到“4.1.29”，因为你的应用程序可能面临“mass assignment”漏洞的风险。
+Laravel 4.1.29改善了所有的数据库驱动程序的列引用。当模型“不”使用“fillable”属性时，它保护您的应用程序免受某个mass assignment漏洞。 如果你在模型上使用了“fillable”属性来防止mass assignemnt漏洞，你的应用程序就是不易受攻击的。然而，如果你正在使用“guarded”，同时传递了一个用户控制的数组给“update”或“save”类型的函数，你应该立即升级到“4.1.29”，因为你的应用程序可能面临“mass assignment”漏洞的风险。
 
-要升级到Laravel 4.1.29，简单的执行“composer update”命令即可。这个版本中没有引入重大的更新。
+要升级到Laravel 4.1.29，简单的执行“composer update”命令即可。这个版本中没有引入重大的改变。
 
 <a name="upgrade-4.1.26"></a>
 ## 从小于等于4.1.25升级到4.1.26 
 
-Laravel 4.1.26为cookies引入了安全方面的改进。在此更新之前，如果一个cookie被另一个恶意用户劫持，这个cookie将长期有效，即使此账户真正的所有者进行了重置密码、退出登录等等操作.
+Laravel 4.1.26为cookies引入了安全方面的改进。在此更新之前，如果一个cookie被另一个恶意用户劫持，这个cookie将长期有效，即使此账户真正的所有者进行了重置密码、退出登录等操作.
 
 这项改变需要在你的数据表“users”（或等价的表）添加一个新的列“remember_token”。 在这项改变之后，每次用户登录你的应用程序时都会被分配给一个新的token。当此用户从应用程序退出时，token也将被更新。这项改变的意义是： 当cookie被劫持，简单的退出应用程序也会使cookie失效。
 
 ### 升级路线
 
-首先，添加一个新的、空变量“remember_token”，类型为VARCHAR(100)，或TEXT，或与“users”表一样。
+首先，添加一个新的可为空的列“remember_token”到你的“users”表里， 其类型为VARCHAR(100)，或TEXT，或等价的类型。
 
 接下来，如果你使用了Eloquent认证驱动，用下面三个方法来更新你的“User”类：
 
@@ -102,7 +102,7 @@ Laravel 4.1.26为cookies引入了安全方面的改进。在此更新之前，�
 
 ### 升级你的Composer依赖
 
-要升级你的应用程序到Laravel 4.1，把“composer.json”文件里的“laravel/framework”的版本号改成“4.1.*”。
+要升级你的应用程序到Laravel 4.1，把“composer.json”文件里的“laravel/framework”的版本改成“4.1.*”。
 
 ### 替换文件
 
@@ -146,13 +146,13 @@ Laravel现在生成一个单独的日志文件“app/storage/logs/laravel.log”
 
 ### 删除重定向末尾斜杠
 
-在你的文件“bootstrap/start.php”里，删除此名调用“$app->redirectIfTrailingSlash()”，这个方法不再需要了，因为它的功能被框架里的“.htaccess”文件负责了。
+在你的文件“bootstrap/start.php”里，删除此句调用“$app->redirectIfTrailingSlash()”，这个方法不再需要了，因为它的功能被框架里的“.htaccess”文件负责了。
 
 接下来，把你的Apache的“.htaccess”文件替换成新的（https://github.com/laravel/laravel/blob/master/public/.htaccess）， 这个文件是用来处理尾部斜杠的。
 
 ### 当前路由访问
 
-现在通过“Route::current()”来访问当前路由，原来的为“Route::getCurrentRoute()”。
+现在通过“Route::current()”来访问当前路由，替换掉原来的“Route::getCurrentRoute()”。
 
 ### Composer更新
 
