@@ -22,6 +22,7 @@
 - 孤客漫步
     - [x] releases.md
     - [ ] upgrade.md
+    - [ ] homestead.md
 
 - 成武
     - [x] configuration.md
