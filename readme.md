@@ -23,7 +23,8 @@
     - [x] releases.md
     - [ ] upgrade.md
     - [x] homestead.md
-    - [ ] lifecycle.md
+    - [x] lifecycle.md
+    - [ ] routing.md
 
 - 成武
     - [x] configuration.md
