@@ -1,10 +1,10 @@
 # Laravel Homestead
 
-- [前言]（#introduction）
-- [包含的软件]（#included-software）
-- [安装和设置]（#installation-and-setup）
-- [日常使用]（#general-usage）
-- [端口]（#ports）
+- [前言](#introduction)
+- [包含的软件](#included-software)
+- [安装和设置](#installation-and-setup)
+- [日常使用](#general-usage)
+- [端口](#ports)
 
 <a name="introduction"></a>
 ## 前言
@@ -27,7 +27,7 @@ Homestead能运行在所有的Windows、Mac和Linux上，它包含了Nginx、PHP
 - Redis
 - Memcached
 - Beanstalkd
-- [Laravel Envoy]（/docs/ssh#envoy-task-runner）
+- [Laravel Envoy](/docs/ssh#envoy-task-runner)
 - Fabric + HipChat Extension
 
 <a name="installation-and-setup"></a>
