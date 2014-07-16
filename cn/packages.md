@@ -1,8 +1,11 @@
 # Package Development
 
 - [Introduction](#introduction)
+- [简介](#简介)
 - [Creating A Package](#creating-a-package)
+- [创建包](#创建包)
 - [Package Structure](#package-structure)
+- [包结构](#包结构)
 - [Service Providers](#service-providers)
 - [Deferred Providers](#deferred-providers)
 - [Package Conventions](#package-conventions)
@@ -16,12 +19,15 @@
 
 <a name="introduction"></a>
 ## Introduction
+## 简介
 
 Packages are the primary way of adding functionality to Laravel. Packages might be anything from a great way to work with dates like [Carbon](https://github.com/briannesbitt/Carbon), or an entire BDD testing framework like [Behat](https://github.com/Behat/Behat).
-
+包是向Laravel中添加功能最重要的途径。它通过一种强大的方式几乎可以包含任意功能，比如处理日期包[Carbon](https://github.com/briannesbitt/Carbon)，[BDD](http://baike.baidu.com/view/1384794.htm)测试框架[Behat](https://github.com/Behat/Behat)
 Of course, there are different types of packages. Some packages are stand-alone, meaning they work with any framework, not just Laravel. Both Carbon and Behat are examples of stand-alone packages. Any of these packages may be used with Laravel by simply requesting them in your `composer.json` file.
+当然，还有很多不同类型的包。有些包是独立的，这意味着它们可以在任何框架中工作，而不仅仅是Laravel。上面提到的Carbon和Behat就是独立的包。要在Laravel中使用这些包只需要在composer.json文件中指明。
 
 On the other hand, other packages are specifically intended for use with Laravel. In previous versions of Laravel, these types of packages were called "bundles". These packages may have routes, controllers, views, configuration, and migrations specifically intended to enhance a Laravel application. As no special process is needed to develop stand-alone packages, this guide primarily covers the development of those that are Laravel specific.
+另一方面，有些包仅支持Laravel。在上一个Laravel版本中，这些类型的包我们称为"bundles"。这些包可以增强Laravel应用的路由、控制器、视图、配置和迁移。由于开发独立的包不需要专门的过程，因此，本手册主要涵盖针对Laravel开发独立的包。
 
 All Laravel packages are distributed via [Packagist](http://packagist.org) and [Composer](http://getcomposer.org), so learning about these wonderful PHP package distribution tools is essential.
 
