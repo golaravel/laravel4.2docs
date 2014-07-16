@@ -2,7 +2,6 @@
 
 - [简介](#简介)
 - [创建包](#创建包)
-- [Package Structure](#package-structure)
 - [包结构](#包结构)
 - [Service Providers](#service-providers)
 - [Deferred Providers](#deferred-providers)
@@ -66,7 +65,10 @@ Once the provider has been registered, you are ready to start developing your pa
 
 When using the `workbench` command, your package will be setup with conventions that allow the package to integrate well with other parts of the Laravel framework:
 
-#### Basic Package Directory Structure
+执行`workbench`命令之后，你的包结构将被初始化，并能够与laravel框架完美融合：
+
+
+#### 包的基本目录结构
 
 	/src
 		/Vendor
@@ -81,14 +83,22 @@ When using the `workbench` command, your package will be setup with conventions 
 
 Let's explore this structure further. The `src/Vendor/Package` directory is the home of all of your package's classes, including the `ServiceProvider`. The `config`, `lang`, `migrations`, and `views` directories, as you might guess, contain the corresponding resources for your package. Packages may have any of these resources, just like "regular" applications.
 
+让我们来深入了解该结构。`src/Vendor/Package`目录是所有`class`的主目录，包括`ServiceProvider`。`config`、`lang`、`migrations`和`views`目录，就如你所猜测，包含了你创建包种相应的资源。包可以包含这些资源中的任意几个，就像一个"regular"的应用。
+
 <a name="service-providers"></a>
-## Service Providers
+## 服务提供器
 
 Service providers are simply bootstrap classes for packages. By default, they contain two methods: `boot` and `register`. Within these methods you may do anything you like: include a routes file, register bindings in the IoC container, attach to events, or anything else you wish to do.
 
+服务提供器只是包的引导类。默认情况下，他们包含两个方法：`boot`和`register`。你可以在这些方法内做任何事情，例如：包含路由文件、注册IoC容器的绑定、监听事件或者任何想做的事情。
+
 The `register` method is called immediately when the service provider is registered, while the `boot` command is only called right before a request is routed. So, if actions in your service provider rely on another service provider already being registered, or you are overriding services bound by another provider, you should use the `boot` method.
 
+`register`方法在服务提供器注册时被立即调用，而boot方法仅在请求被路由到之前调用。因此，如果服务提供器中的动作（action）依赖另一个已经注册的服务提供器，或者你正在覆盖另一个服务提供其绑定的服务，就应该使用boot方法。
+
 When creating a package using the `workbench`, the `boot` command will already contain one action:
+
+当使用`workbench`命令创建包时，`boot`方法已经包含了如下的动作：
 
 	$this->package('vendor/package');
 
