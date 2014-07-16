@@ -1,8 +1,6 @@
 # Package Development
 
-- [Introduction](#introduction)
 - [简介](#简介)
-- [Creating A Package](#creating-a-package)
 - [创建包](#创建包)
 - [Package Structure](#package-structure)
 - [包结构](#包结构)
@@ -18,16 +16,15 @@
 - [Publishing Packages](#publishing-packages)
 
 <a name="introduction"></a>
-## Introduction
 ## 简介
 
 Packages are the primary way of adding functionality to Laravel. Packages might be anything from a great way to work with dates like [Carbon](https://github.com/briannesbitt/Carbon), or an entire BDD testing framework like [Behat](https://github.com/Behat/Behat).
 
-包是向Laravel中添加功能最重要的途径。它通过一种强大的方式几乎可以包含任意功能，比如处理日期包[Carbon](https://github.com/briannesbitt/Carbon)，[BDD](http://baike.baidu.com/view/1384794.htm)测试框架[Behat](https://github.com/Behat/Behat).
+包是向Laravel中添加功能最重要的途径。它通过一种强大的方式几乎可以包含任意功能，比如处理日期的扩展包[Carbon](https://github.com/briannesbitt/Carbon)，完整的[BDD](http://baike.baidu.com/view/1384794.htm)测试框架扩展包[Behat](https://github.com/Behat/Behat).
 
 Of course, there are different types of packages. Some packages are stand-alone, meaning they work with any framework, not just Laravel. Both Carbon and Behat are examples of stand-alone packages. Any of these packages may be used with Laravel by simply requesting them in your `composer.json` file.
 
-当然，还有很多不同类型的包。有些包是独立的，这意味着它们可以在任何框架中工作，而不仅仅是Laravel。上面提到的Carbon和Behat就是独立的包。要在Laravel中使用这些包只需要在composer.json文件中指明。
+当然，还有很多不同类型的包。有些包是独立的，这意味着它们可以在任何框架中工作，而不仅仅是Laravel。上面提到的Carbon和Behat就是独立的包。要在Laravel中使用这些包只需要在`composer.json`文件中指明。
 
 On the other hand, other packages are specifically intended for use with Laravel. In previous versions of Laravel, these types of packages were called "bundles". These packages may have routes, controllers, views, configuration, and migrations specifically intended to enhance a Laravel application. As no special process is needed to develop stand-alone packages, this guide primarily covers the development of those that are Laravel specific.
 
@@ -38,24 +35,34 @@ All Laravel packages are distributed via [Packagist](http://packagist.org) and [
 所有Laravel包都是通过[Packagist](http://packagist.org)和[Composer](http://getcomposer.org)发布的，因此很有必要学习这些功能强大的PHP包发布管理工具。
 
 <a name="creating-a-package"></a>
-## Creating A Package
+## 创建包
 
 The easiest way to create a new package for use with Laravel is the `workbench` Artisan command. First, you will need to set a few options in the `app/config/workbench.php` file. In that file, you will find a `name` and `email` option. These values will be used to generate a `composer.json` file for your new package. Once you have supplied those values, you are ready to build a workbench package!
 
-#### Issuing The Workbench Artisan Command
+为Laravel创建一个包的最简单方式是使用Artisan的`workbench`命令。首先，你需要在`app/confg/workbench.php`文件中配置一些参数。在该文件中，你会看到`name`和`email`两个参数，这些值是用来为您新创建的包生成`composer.json`文件的。一旦你提供了这些值，就可以开始构建一个新包了！
+
+#### 执行Artisan的workbench命令
 
 	php artisan workbench vendor/package --resources
 
 The vendor name is a way to distinguish your package from other packages of the same name from different authors. For example, if I (Taylor Otwell) were to create a new package named "Zapper", the vendor name could be `Taylor` while the package name would be `Zapper`. By default, the workbench will create framework agnostic packages; however, the `resources` command tells the workbench to generate the package with Laravel specific directories such as `migrations`, `views`, `config`, etc.
 
+厂商名称（vendor name）是用来区分不同作者构建了相同名字的包。例如，如果我（Taylor Otwell）创建了个名为"Zapper"的包，厂商名就可以叫做`Taylor`，包名可以叫做`Zapper`。默认情况下，workbench命令建的包是不依赖任何框架的；不过，`resources`命令将会告诉workbench生成关联Laravel的一些特殊目录，例如migrations、views、config等。
+
 Once the `workbench` command has been executed, your package will be available within the `workbench` directory of your Laravel installation. Next, you should register the `ServiceProvider` that was created for your package. You may register the provider by adding it to the `providers` array in the `app/config/app.php` file. This will instruct Laravel to load your package when your application starts. Service providers use a `[Package]ServiceProvider` naming convention. So, using the example above, you would add `Taylor\Zapper\ZapperServiceProvider` to the `providers` array.
+
+一旦执行了workbench命令，新创建的包就会出现在Laravel安装目录下的workbench目录中。接下来就应该为你创建的包注册`ServiceProvider`了。你可以通过在`app/config/app.php`文件里的`provides`数组中添加该包。这将通知Laravel在应用程序开始启动时加载该包。服务提供者（Service providers）使用`[Package]ServiceProvider`样式的命名方式。所以，以上案例中，你需要将`Taylor\Zapper\ZapperServiceProvider`添加到providers数组。
 
 Once the provider has been registered, you are ready to start developing your package! However, before diving in, you may wish to review the sections below to get more familiar with the package structure and development workflow.
 
+一旦注册了provider，你就可以开始写代码了！然而，在此之前，建议你查看以下部分来了解更多关于包结构和开发流程的知识。
+
 > **Note:** If your service provider cannot be found, run the `php artisan dump-autoload` command from your application's root directory
 
+> **注意:** 如果你的Service providers提示无法找到, 在项目根目录执行`php artisan dump-autoload` 
+
 <a name="package-structure"></a>
-## Package Structure
+## 包结构
 
 When using the `workbench` command, your package will be setup with conventions that allow the package to integrate well with other parts of the Laravel framework:
 
