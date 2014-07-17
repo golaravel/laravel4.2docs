@@ -254,46 +254,62 @@ The method signature for `addNamespace` is identical on the `View`, `Lang`, and 
 
 When other developers install your package, they may wish to override some of the configuration options. However, if they change the values in your package source code, they will be overwritten the next time Composer updates the package. Instead, the `config:publish` artisan command should be used:
 
+但其他开发者安装你的包时，他们也许需要覆盖一些配置项。然而，如果从包源代码中改变值，他们将会在下次使用Composer更新包时又被覆盖。替代方法是使用artisan命令`config:publish`：
+
 	php artisan config:publish vendor/package
 
 When this command is executed, the configuration files for your application will be copied to `app/config/packages/vendor/package` where they can be safely modified by the developer!
 
+当执行该命令，配置文件就会拷贝到`app/config/packages/vendor/package`，开发者就可以安全的更改配置项了。
+
 > **Note:** The developer may also create environment specific configuration files for your package by placing them in `app/config/packages/vendor/package/environment`.
 
+> **注意:** 开发者也可以为该包创建指定环境下的配置文件，替换某些配置项然后并放置在`app/config/packages/vendor/package/environment`.
+
 <a name="package-views"></a>
-## Package Views
+## 包视图
 
 If you are using a package in your application, you may occasionally wish to customize the package's views. You can easily export the package views to your own `app/views` directory using the `view:publish` Artisan command:
+
+如果在你的应用程序中使用某个包，你可能会定制这个包的视图。你可以很轻松的将这个包得视图文件导入到你自己的`app/views`目录，只需使用`view:publish`这个Artisan命令
 
 	php artisan view:publish vendor/package
 
 This command will move the package's views into the `app/views/packages` directory. If this directory doesn't already exist, it will be created when you run the command. Once the views have been published, you may tweak them to your liking! The exported views will automatically take precedence over the package's own view files.
 
-<a name="package-migrations"></a>
-## Package Migrations
+这个命令会将包得视图文件迁移到`app/views/packages`目录，如果这个目录不存在，将会被创建。一旦这写视图文件被公开创建，你就可以按照你自己的喜好去修改他们，这些导出的视图会比包自己的视图文件优先载入。
 
-#### Creating Migrations For Workbench Packages
+<a name="package-migrations"></a>
+## 包迁移
+
+#### 为工作台(Workbench)的包创建迁移
 
 You may easily create and run migrations for any of your packages. To create a migration for a package in the workbench, use the `--bench` option:
 
+你可以很容易在包中创建和运行迁移。要为工作台里的包创建迁移，使用`--bench`选项：
+
 	php artisan migrate:make create_users_table --bench="vendor/package"
 
-#### Running Migrations For Workbench Packages
+#### 为工作台(Workbench)的包运行迁移
 
 	php artisan migrate --bench="vendor/package"
 
-#### Running Migrations For An Installed Package
+#### 为已安装的包执行迁移
 
 To run migrations for a finished package that was installed via Composer into the `vendor` directory, you may use the `--package` directive:
+
+要为已经通过Composer安装在vendor目录下的包执行迁移，你可以直接使用`--package`：
 
 	php artisan migrate --package="vendor/package"
 
 <a name="package-assets"></a>
-## Package Assets
+## 包Assets
 
-#### Moving Package Assets To Public
+#### 将包Assets移动到Public
 
 Some packages may have assets such as JavaScript, CSS, and images. However, we are unable to link to assets in the `vendor` or `workbench` directories, so we need a way to move these assets into the `public` directory of our application. The `asset:publish` command will take care of this for you:
+
+有些包可能含有assets，例如JavaScript，CSS，和图片。然而，我们无法链接到`vendor`或`workbench`目录里的`assets`，所以我们需要可以将这些`assets`移入应用程序的`public`目录。`asset:publish`命令可以实现：
 
 	php artisan asset:publish
 
@@ -301,17 +317,32 @@ Some packages may have assets such as JavaScript, CSS, and images. However, we a
 
 If the package is still in the `workbench`, use the `--bench` directive:
 
+如果这个包仍在`workbench`中，那么请使用`--bench`指令:
+
 	php artisan asset:publish --bench="vendor/package"
 
 This command will move the assets into the `public/packages` directory according to the vendor and package name. So, a package named `userscape/kudos` would have its assets moved to `public/packages/userscape/kudos`. Using this asset publishing convention allows you to safely code asset paths in your package's views.
 
+这个命令将会把assets移入与“供应商”和“包名”相对应的`public/packages`目录下面。因此，包名为`userscape/kudos`的assets将会被移至`public/packages/userscape/kudos`。通过使用这个asset发布方法，可以让您安全的在包中的view内访问asset路径。
+
 <a name="publishing-packages"></a>
-## Publishing Packages
+## 发布包
 
 When your package is ready to publish, you should submit the package to the [Packagist](http://packagist.org) repository. If the package is specific to Laravel, consider adding a `laravel` tag to your package's `composer.json` file.
 
+当你创建的包准备发布时，你应该将包提交到 [Packagist](http://packagist.org) 仓库。如果你的包只针对Laravel，最好在包的`composer.json`文件中添加`laravel`标签
+
 Also, it is courteous and helpful to tag your releases so that developers can depend on stable versions when requesting your package in their `composer.json` files. If a stable version is not ready, consider using the `branch-alias` Composer directive.
+
+还有，在发布的版本中添加tag，以便开发者能当请求你的包在他们`composer.json`文件中依赖稳定版本。如果稳定版本还没有好，考虑直接在Composer中使用`branch-alias`。
 
 Once your package has been published, feel free to continue developing it within the application context created by `workbench`. This is a great way to continue to conveniently develop the package even after it has been published.
 
+一旦你的包发布，放舒心，继续在由`workbench`创建的包中，结合应用程序上下文进行开发。这是很便利的在发布包后继续开发包。
+
 Some organizations choose to host their own private repository of packages for their own developers. If you are interested in doing this, review the documentation for the [Satis](http://github.com/composer/satis) project provided by the Composer team.
+
+一些组织使用他们私有分支包为他们自己开发者。如果你对这感兴趣，查看Composer团队构建的[Satis](http://github.com/composer/satis) 文档。
+
+
+译者：mpandar（马胜盼）
