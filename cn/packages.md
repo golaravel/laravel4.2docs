@@ -6,13 +6,13 @@
 - [服务提供器](#service-providers)
 - [延迟加载服务提供器](#deferred-providers)
 - [包约定](#package-conventions)
-- [Development Workflow](#development-workflow)
-- [Package Routing](#package-routing)
-- [Package Configuration](#package-configuration)
-- [Package Views](#package-views)
-- [Package Migrations](#package-migrations)
-- [Package Assets](#package-assets)
-- [Publishing Packages](#publishing-packages)
+- [开发流程](#development-workflow)
+- [包路由](#package-routing)
+- [包配置](#package-configuration)
+- [包视图](#package-views)
+- [包迁移](#package-migrations)
+- [包Assets](#package-assets)
+- [发布包](#publishing-packages)
 
 <a name="introduction"></a>
 ## 简介
