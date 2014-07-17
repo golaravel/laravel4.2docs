@@ -104,30 +104,45 @@ When creating a package using the `workbench`, the `boot` command will already c
 
 This method allows Laravel to know how to properly load the views, configuration, and other resources for your application. In general, there should be no need for you to change this line of code, as it will setup the package using the workbench conventions.
 
+该方法告诉Laravel如何为应用程序加载视图、配置或其他资源。通常情况下，你没有必要改变这行代码，因为它会根据workbench的默认约定将包设置好的。
+
 By default, after registering a package, its resources will be available using the "package" half of `vendor/package`. However, you may pass a second argument into the `package` method to override this behavior. For example:
 
-	// Passing custom namespace to package method
+默认情况下，一旦注册了一个包，那么它的资源可以通过"package"方法在`vendor/package`中找到。你也可以向`package` 方法中传入第二个参数来重写这个方法。例如
+
+	//向 `package` 方法中传入一个自定义的命名空间
 	$this->package('vendor/package', 'custom-namespace');
 
-	// Package resources now accessed via custom-namespace
+	//现在，这个包的资源现在可以通过这个自定义的命名空间来访问
 	$view = View::make('custom-namespace::foo');
 
 There is not a "default location" for service provider classes. You may put them anywhere you like, perhaps organizing them in a `Providers` namespace within your `app` directory. The file may be placed anywhere, as long as Composer's [auto-loading facilities](http://getcomposer.org/doc/01-basic-usage.md#autoloading) know how to load the class.
 
+Laravel并没有为service provider提供“默认”的存放地点。您可以根据自己的喜好，将它们放置在任何地方，您也可以将它们统一组织在一个`Providers`命名空间里，并放置在应用的`app`目录下。这些文件可以被放置在任何地方，只需保证Composer的[自动加载](http://getcomposer.org/doc/01-basic-usage.md#autoloading)组件知道如何加载这些类。
+
 If you have changed the location of your package's resources, such as configuration files or views, you should pass a third argument to the `package` method which specifies the location of your resources:
+
+如果你改变了你的包得资源的位置，比如配置文件或者视图，你需要在`package`函数中传递第三个参数，指定你的资源位置
 
 	$this->package('vendor/package', null, '/path/to/resources');
 
 <a name="deferred-providers"></a>
 ## Deferred Providers
+## 延迟加载服务提供器
 
 If you are writing a service provider that does not register any resources such as configuration or views, you may choose to make your provider "deferred". A deferred service provider is only loaded and registered when one of the services it provides is actually needed by the application IoC container. If none of the provider's services are needed for a given request cycle, the provider is never loaded.
 
+如果你写了一个没有注册任何类似配置文件或视图等资源的服务提供器，你可以选择"延迟"加载你的提供器。延迟加载的服务提供器在这个服务真正被应用程序Ioc容器需要的时候才会被加载和注册。如果这个提供其的服务没有被当前的请求路由需要，那么这个提供器永远不会被加载
+
 To defer the execution of your service provider, set the `defer` property on the provider to `true`:
+
+如果想延时载入你的服务提供器，只需要在提供器重设置`defer`属性为`true`:
 
 	protected $defer = true;
 
 Next you should override the `provides` method from the base `Illuminate\Support\ServiceProvider` class and return an array of all of the bindings that your provider adds to the IoC container. For example, if your provider registers `package.service` and `package.another-service` in the IoC container, your `provides` method should look like this:
+
+接下来你需要重写继承自基类`Illuminate\Support\ServiceProvider`的`provides`方法，并返回绑定了你的提供器的IoC容器中类型的数组集合。例如，你的提供器在IoC容器注册了`package.service` 和 `package.another-service`两个类型，你的`provides`的方法看起来应该是这个样子：
 
 	public function provides()
 	{
