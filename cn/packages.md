@@ -132,7 +132,7 @@ If you have changed the location of your package's resources, such as configurat
 
 If you are writing a service provider that does not register any resources such as configuration or views, you may choose to make your provider "deferred". A deferred service provider is only loaded and registered when one of the services it provides is actually needed by the application IoC container. If none of the provider's services are needed for a given request cycle, the provider is never loaded.
 
-如果你写了一个没有注册任何类似配置文件或视图等资源的服务提供器，你可以选择"延迟"加载你的提供器。延迟加载的服务提供器在这个服务真正被应用程序Ioc容器需要的时候才会被加载和注册。如果这个提供其的服务没有被当前的请求路由需要，那么这个提供器永远不会被加载
+如果你写了一个服务提供器，但没有注册任何资源，比如配置文件或视图等，你可以选择"延迟"加载你的提供器。延迟加载的服务提供器在这个服务真正被IoC容器需要的时候才会被加载和注册。如果这个服务提供器没有被当前的请求路由需要，那么这个提供器永远不会被加载
 
 To defer the execution of your service provider, set the `defer` property on the provider to `true`:
 
@@ -150,41 +150,56 @@ Next you should override the `provides` method from the base `Illuminate\Support
 	}
 
 <a name="package-conventions"></a>
-## Package Conventions
+## 包约定
 
 When utilizing resources from a package, such as configuration items or views, a double-colon syntax will generally be used:
 
-#### Loading A View From A Package
+要使用包中的资源，例如配置或视图，需要用双冒号语法：
+
+#### 从包中载入视图
 
 	return View::make('package::view.name');
 
-#### Retrieving A Package Configuration Item
+#### 获取包的某个配置项
 
 	return Config::get('package::group.option');
 
 > **Note:** If your package contains migrations, consider prefixing the migration name with your package name to avoid potential class name conflicts with other packages.
 
+> **注意:** 如果你包中包含迁移，请为迁移名（migration name）添加包名作为前缀，以避免与其他包中的类名冲突。
+
+
 <a name="development-workflow"></a>
-## Development Workflow
+## 开发流程
 
 When developing a package, it is useful to be able to develop within the context of an application, allowing you to easily view and experiment with your templates, etc. So, to get started, install a fresh copy of the Laravel framework, then use the `workbench` command to create your package structure.
 
+当开发一个包时，能够使用应用程序上文是相当有用的，这样将允许你很容易的解决视图模板的等问题。所以，我们开始，安装一个全新的Laravel框架，使用`workbench`命令创建包结构。
+
 After the `workbench` command has created your package. You may `git init` from the `workbench/[vendor]/[package]` directory and `git push` your package straight from the workbench! This will allow you to conveniently develop the package in an application context without being bogged down by constant `composer update` commands.
+
+在使用`workbench`命令创建包后。你可以在`workbench/[vendor]/[package]`目录使用`git init`，并在workbench中直接`git push`！这将允许你在应用程序上下文中方便开发而不用为反复使用`composer update`命令苦扰。
 
 Since your packages are in the `workbench` directory, you may be wondering how Composer knows to autoload your package's files. When the `workbench` directory exists, Laravel will intelligently scan it for packages, loading their Composer autoload files when the application starts!
 
+当包存放在`workbench`目录时，你可能担心Composer如何知道自动加载包文件。当workbench目录存在，Laravel将智能扫描该目录，在应用程序开始时加载它们的Composer自动加载文件！
+
 If you need to regenerate your package's autoload files, you may use the `php artisan dump-autoload` command. This command will regenerate the autoload files for your root project, as well as any workbenches you have created.
 
-#### Running The Artisan Autoload Command
+如果你需要重新生成报的自动加载文件，你可以使用`php artisan dump-autoload`命令，这个命令将会重新为您的整个项目生成自动加载文件，也包括你创建的所有工作台(workbenches)
+
+#### 运行Artisan的自动加载命令
 
 	php artisan dump-autoload
 
 <a name="package-routing"></a>
-## Package Routing
+## 包路由
 
 In prior versions of Laravel, a `handles` clause was used to specify which URIs a package could respond to. However, in Laravel 4, a package may respond to any URI. To load a routes file for your package, simply `include` it from within your service provider's `boot` method.
 
-#### Including A Routes File From A Service Provider
+在之前的Laravel版本中，`handlers`用来指定那个URI包会响应。然而，在Laravel4中，一个包可以相应任意URI。要在包中加载路由文件，只需在服务提供器的`boot`方法`include`它。
+
+#### 在服务提供器中包含路由文件
 
 	public function boot()
 	{
@@ -195,34 +210,47 @@ In prior versions of Laravel, a `handles` clause was used to specify which URIs 
 
 > **Note:** If your package is using controllers, you will need to make sure they are properly configured in your `composer.json` file's auto-load section.
 
-<a name="package-configuration"></a>
-## Package Configuration
+> **注意:** 如果你的包中使用了控制器, 你需要确保正确配置了`composer.json`文件的auto-load字段.
 
-#### Accessing Package Configuration Files
+<a name="package-configuration"></a>
+## 包配置
+
+#### 访问包配置文件
 
 Some packages may require configuration files. These files should be defined in the same way as typical application configuration files. And, when using the default `$this->package` method of registering resources in your service provider, may be accessed using the usual "double-colon" syntax:
 
+有时创建的包可能会需要配置文件。这些配置文件应该和应用程序配置文件相同方法定义。并且，当使用 `$this->package`方法来注册服务提供器时，那么就可以使用“双冒号”语法来访问：
+
 	Config::get('package::file.option');
 
-#### Accessing Single File Package Configuration
+#### 访问包单一配置文件
 
 However, if your package contains a single configuration file, you may simply name the file `config.php`. When this is done, you may access the options directly, without specifying the file name:
+
+然而，如果你包仅有一个配置文件，你可以简单命名为`config.php`。当你这么做时，你可以直接访问该配置项，而不需要特别指明文件名：
 
 	Config::get('package::option');
 
 #### Registering A Resource Namespace Manually
+#### 手动注册资源的命名空间
 
 Sometimes, you may wish to register package resources such as views outside of the typical `$this->package` method. Typically, this would only be done if the resources were not in a conventional location. To register the resources manually, you may use the `addNamespace` method of the `View`, `Lang`, and `Config` classes:
+
+有时候，你可能希望在`$this->package`特有方法之外注册包的资源，比如视图。通常只有在这些资源不在约定的位置的时候才应该这么做。如果需要手动注册资源，你可以使用`View`, `Lang`, 和 `Config` 中的`addNamespace`方法实现:
 
 	View::addNamespace('package', __DIR__.'/path/to/views');
 
 Once the namespace has been registered, you may use the namespace name and the "double colon" syntax to access the resources:
 
+一旦这个资源命名空间被注册，你就可以使用这个空间名，并使用"双冒号"语法去访问这个资源
+
 	return View::make('package::view.name');
 
 The method signature for `addNamespace` is identical on the `View`, `Lang`, and `Config` classes.
 
-### Cascading Configuration Files
+`View`, `Lang`, 和 `Config`类中的`addNamespace`方法的参数都是一样的
+
+### 级联配置文件
 
 When other developers install your package, they may wish to override some of the configuration options. However, if they change the values in your package source code, they will be overwritten the next time Composer updates the package. Instead, the `config:publish` artisan command should be used:
 
