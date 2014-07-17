@@ -200,7 +200,7 @@ Laravel并没有为service provider提供“默认”的存放地点。您可以
 
 	php artisan view:publish vendor/package
 
-这个命令会将包的视图文件迁移到`app/views/packages`目录，如果这个目录不存在，将会被创建。一旦这写视图文件被公开创建，你就可以按照你自己的喜好去修改他们，这些导出的视图会比包自己的视图文件优先载入。
+这个命令会将包的视图文件迁移到`app/views/packages`目录，如果这个目录不存在，将会被创建。一旦这些视图文件被公开创建，你就可以按照你自己的喜好去修改他们，这些导出的视图会比包自己的视图文件优先载入。
 
 <a name="package-migrations"></a>
 ## 包迁移
