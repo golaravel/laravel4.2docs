@@ -30,7 +30,10 @@
     - [x] configuration.md
 
 - mpandar
-    - [ ] packages.md
+    - [x] packages.md
+
+- wizarot
+    - [ ] database.md
 
 
 ## 版权协议
