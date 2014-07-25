@@ -33,7 +33,7 @@
     - [x] packages.md
 
 - wizarot
-    - [ ] database.md
+    - [x] database.md
 
 
 ## 版权协议
