@@ -32,6 +32,7 @@
 - mpandar
     - [x] packages.md
     - [ ] facades.md
+    - [ ] ioc.md
 
 - wizarot
     - [x] database.md
