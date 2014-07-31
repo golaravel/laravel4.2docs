@@ -157,3 +157,7 @@ Validator  |  [Illuminate\Validation\Factory](http://laravel.com/api/4.2/Illumin
 Validator (Instance)  |  [Illuminate\Validation\Validator](http://laravel.com/api/4.2/Illuminate/Validation/Validator.html)
 View  |  [Illuminate\View\Factory](http://laravel.com/api/4.2/Illuminate/View/Factory.html)  |  `view`
 View (Instance)  |  [Illuminate\View\View](http://laravel.com/api/4.2/Illuminate/View/View.html)  |
+
+
+
+译者：mpandar（马胜盼）
