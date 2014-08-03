@@ -36,6 +36,7 @@
 
 - wizarot
     - [x] database.md
+    - [ ] redis.md
 
 - uephp
     - [ ] cache.md
