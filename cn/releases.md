@@ -38,7 +38,7 @@ Laravel Cashier是一个简单的、富于表现力的库，它用来管理条�
 
 Artisan的“queue:work”命令现在支持“--daemon”选项，它用来启动一个“守护进程模式”的工人，这个模式使得工人在不需要重启框架的情况下继续工作。这会显著的减少CPU的使用率，其代价只是使得应用程序的部署过程稍显复杂。
 
-在队列文档（/docs/queue#daemon-queue-workers）里能找到更多的队列工人相关的信息。
+在队列文档（/docs/queues#daemon-queue-workers）里能找到更多的队列工人相关的信息。
 
 ### 邮件API驱动
 

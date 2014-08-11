@@ -14,15 +14,17 @@ Laravel 4.2 requires PHP 5.4.0 or greater.
 
 ### Encryption Defaults
 
-Add a new `cipher` option in your `app/config/app.php` configuration file. The value of this option shuold be `MCRYPT_RIJNDAEL_256`.
+Add a new `cipher` option in your `app/config/app.php` configuration file. The value of this option should be `MCRYPT_RIJNDAEL_256`.
 
 	'cipher' => MCRYPT_RIJNDAEL_256
 
-This seting may be used to control the default cipher used by the Laravel envryption facilities.
+This setting may be used to control the default cipher used by the Laravel encryption facilities.
+
+> **Note:** In Laravel 4.2, the default cipher is `MCRYPT_RIJNDAEL_128` (AES), which is considered to be the most secure cipher. Changing the cipher back to `MCRYPT_RIJNDAEL_256` is required to decrypt cookies/values that were encrypted in Laravel <= 4.1
 
 ### Soft Deleting Models Now Use Traits
 
-If you are using soft deleting models, the `softDeletes` property has been removed. You should now use the `SoftDeletingTrait` like so:
+If you are using soft deleting models, the `softDeletes` property has been removed. You must now use the `SoftDeletingTrait` like so:
 
 	use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
@@ -30,7 +32,7 @@ If you are using soft deleting models, the `softDeletes` property has been remov
 		use SoftDeletingTrait;
 	}
 
-You should also manually add the `deleted_at` column to your `dates` property:
+You must also manually add the `deleted_at` column to your `dates` property:
 
 	class User extends Eloquent {
 		use SoftDeletingTrait;
@@ -39,6 +41,8 @@ You should also manually add the `deleted_at` column to your `dates` property:
 	}
 
 The API for all soft delete operations remains the same.
+
+> **Note:** The `SoftDeletingTrait` can not be applied on a base model. It must be used on an actual model class.
 
 ### View / Pagination Environment Renamed
 
@@ -50,10 +54,16 @@ If you are extending the `Illuminate\Pagination\Presenter` class, the abstract m
 
 	abstract public function getPageLinkWrapper($url, $page, $rel = null);
 
+### Iron.Io Queue Encryption
+
+If you are using the Iron.io queue driver, you will need to add a new `encrypt` option to your queue configuration file:
+
+    'encrypt' => true
+
 <a name="upgrade-4.1.29"></a>
 ## Upgrading To 4.1.29 From <= 4.1.x
 
-Laravel 4.1.29 improves the column quoting for all database drivers. This protects your application from some mass assignment vulnerabilities when **not** using the `fillable` property on models. If you are using the `fillable` property on your models to protect against mass assignemnt, your application is not vulerable. However, if you are using `guarded` and are passing a user controlled array into an "update" or "save" type function, you should upgrade to `4.1.29` immediately as your application may be at risk of mass assignment.
+Laravel 4.1.29 improves the column quoting for all database drivers. This protects your application from some mass assignment vulnerabilities when **not** using the `fillable` property on models. If you are using the `fillable` property on your models to protect against mass assignment, your application is not vulnerable. However, if you are using `guarded` and are passing a user controlled array into an "update" or "save" type function, you should upgrade to `4.1.29` immediately as your application may be at risk of mass assignment.
 
 To upgrade to Laravel 4.1.29, simply `composer update`. No breaking changes are introduced in this release.
 

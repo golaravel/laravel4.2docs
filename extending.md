@@ -85,7 +85,7 @@ Extending Laravel with a custom session driver is just as easy as extending the 
 
 ### Where To Extend The Session
 
-Session extensions need to be registered differently than other extensions like Cache and Auth. Since sessions are started very early in the request-lifecycle, registering the extensions in a `start` file will happen be too late. Instead, a [service provider](/docs/ioc#service-providers) will be needed. You should place your session extension code in the `register` method of your service provider, and the provider should be placed **below** the default `Illuminate\Session\SessionServiceProvider` in the `providers` configuration array.
+Session extensions need to be registered differently than other extensions like Cache and Auth. Since sessions are started very early in the request-lifecycle, registering the extensions in a `start` file will happen too late. Instead, a [service provider](/docs/ioc#service-providers) will be needed. You should place your session extension code in the `register` method of your service provider, and the provider should be placed **below** the default `Illuminate\Session\SessionServiceProvider` in the `providers` configuration array.
 
 ### Writing The Session Extension
 
@@ -139,12 +139,18 @@ Let's take a look at the `UserProviderInterface`:
 	interface UserProviderInterface {
 
 		public function retrieveById($identifier);
+		public function retrieveByToken($identifier, $token);
+		public function updateRememberToken(UserInterface $user, $token);
 		public function retrieveByCredentials(array $credentials);
 		public function validateCredentials(UserInterface $user, array $credentials);
 
 	}
 
 The `retrieveById` function typically receives a numeric key representing the user, such as an auto-incrementing ID from a MySQL database. The `UserInterface` implementation matching the ID should be retrieved and returned by the method.
+
+The `retrieveByToken` function retrieves a user by their unique `$identifier` and "remember me" `$token`, stored in a field `remember_token`. As with with previous method, the `UserInterface` implementation should be returned.
+
+The `updateRememberToken` method updates the `$user` field `remember_token` with the new `$token`. The new token can be either a fresh token, assigned on successfull "remember me" login attempt, or a null when user is logged out.
 
 The `retrieveByCredentials` method receives the array of credentials passed to the `Auth::attempt` method when attempting to sign into an application. The method should then "query" the underlying persistent storage for the user matching those credentials. Typically, this method will run a query with a "where" condition on `$credentials['username']`. **This method should not attempt to do any password validation or authentication.**
 

@@ -17,7 +17,7 @@ The queue configuration file is stored in `app/config/queue.php`. In this file y
 
 The following dependencies are needed for the listed queue drivers:
 
-- Beanstalkd: `pda/pheanstalk`
+- Beanstalkd: `pda/pheanstalk ~2.0`
 - Amazon SQS: `aws/aws-sdk-php`
 - IronMQ: `iron-io/iron_mq`
 
@@ -128,7 +128,9 @@ You may also push a Closure onto the queue. This is very convenient for quick, s
 		$job->delete();
 	});
 
-When using Iron.io [push queues](#push-queues), you should take extra precaution queueing Closures. The end-point that receives your queue messages should check for a token to verify that the request is actually from Iron.io. For example, your push queue end-point should be something like: `https://yourapp.com/queue/receive?token=SecretToken`. You may then check the value of the secret token in your application before marshaling the queue request.
+> **Note:** Instead of making objects available to queued Closures via the `use` directive, consider passing primary keys and re-pulling the associated models from within your queue job. This often avoids unexpected serialization behavior.
+
+When using Iron.io [push queues](#push-queues), you should take extra precaution queueing Closures. The end-point that receives your queue messages should check for a token to verify that the request is actually from Iron.io. For example, your push queue end-point should be something like: `https://yourapp.com/queue/receive?token=SecretToken`. You may then check the value of the secret token in your application before marshalling the queue request.
 
 <a name="running-the-queue-listener"></a>
 ## Running The Queue Listener
@@ -171,8 +173,8 @@ To process only the first job on the queue, you may use the `queue:work` command
 
 	php artisan queue:work
 
-<a name="daemon-queue-workers"></a>
-## Daemon Queue Workers
+<a name="daemon-queue-worker"></a>
+## Daemon Queue Worker
 
 The `queue:work` also includes a `--daemon` option for forcing the queue worker to continue processing jobs without ever re-booting the framework. This results in a significant reduction of CPU usage when compared to the `queue:listen` command, but at the added complexity of needing to drain the queues of currently executing jobs during your deployments.
 
@@ -188,15 +190,19 @@ As you can see, the `queue:work` command supports most of the same options avail
 
 ### Deploying With Daemon Queue Workers
 
-The simplest way to deploy an application using daemon queue workers is to put the application in maintenance mode at the beginning of your deploymnet. This can be done using the `php artisan down` command. Once the application is in maintenance mode, Laravel will now accept any new jobs off of the queue, but will continue to process existing jobs. Once enough time has passed for all of your existing jobs to execute (usually no longer than 30-60 seconds), you may stop the worker and continue your deployment process.
+The simplest way to deploy an application using daemon queue workers is to put the application in maintenance mode at the beginning of your deploymnet. This can be done using the `php artisan down` command. Once the application is in maintenance mode, Laravel will not accept any new jobs off of the queue, but will continue to process existing jobs.
 
-If you are using Supervisor or Laravel Forge, which utilizes Supervisor, you may typically stop a worker with a command like the following:
+The easiest way to restart your workers is to include the following command in your deployment script:
 
-	supervisorctl stop worker-1
+	php artisan queue:restart
 
-Once the queues have been drained and your fresh code has been deployed to your server, you should restart the daemon queue work. If you are using Supervisor, this can typically be done with a command like this:
+This command will instruct all queue workers to restart after they finish processing their current job.
 
-	supervisorctl start worker-1
+### Coding For Daemon Queue Workers
+
+Daemon queue workers do not restart the framework before processing each job. Therefore, you should be careful to free any heavy resources before your job finishes. For example, if you are doing image manipulation with the GD library, you should free the memory with `imagedestroy` when you are done.
+
+Similarly, your database connection may disconnect when being used by long-running daemon. You may use the `DB::reconnect` method to ensure you have a fresh connection.
 
 <a name="push-queues"></a>
 ## Push Queues

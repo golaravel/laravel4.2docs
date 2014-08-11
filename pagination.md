@@ -22,6 +22,8 @@ There are several ways to paginate items. The simplest is by using the `paginate
 
 	$users = DB::table('users')->paginate(15);
 
+> **Note:** Currently, pagination operations that use a `groupBy` statement cannot be executed efficiently by Laravel. If you need to use a `groupBy` with a paginated result set, it is recommended that you query the database manually and use `Paginator::make`.
+
 #### Paginating An Eloquent Model
 
 You may also paginate [Eloquent](/docs/eloquent) models:
@@ -101,7 +103,7 @@ This method call will generate URLs that look something like this:
 <a name="converting-to-json"></a>
 ## Converting To JSON
 
-The `Paginator` class implements the `Illuminate\Support\Contracts\JsonableInterface` contract and exposes the `toJson` method. You can may also convert a `Paginator` instance to JSON by returning it from a route. The JSON'd form of the instance will include some "meta" information such as `total`, `current_page`, `last_page`, `from`, and `to`. The instance's data will be available via the `data` key in the JSON array.
+The `Paginator` class implements the `Illuminate\Support\Contracts\JsonableInterface` contract and exposes the `toJson` method. You may also convert a `Paginator` instance to JSON by returning it from a route. The JSON'd form of the instance will include some "meta" information such as `total`, `current_page`, `last_page`, `from`, and `to`. The instance's data will be available via the `data` key in the JSON array.
 
 <a name="custom-presenters"></a>
 ## Custom Presenters
