@@ -33,14 +33,18 @@
     - [x] packages.md
     - [ ] facades.md
     - [ ] ioc.md
+    - [ ] templates.md
 
 - wizarot
     - [x] database.md
+    - [ ] redis.md
 
 - uephp
     - [ ] cache.md
     - [ ] billing.md
 
+- jabez128 
+    - [ ] controllers.md
 
 ## 版权协议
 
