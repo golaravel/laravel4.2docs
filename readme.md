@@ -33,6 +33,7 @@
     - [x] packages.md
     - [ ] facades.md
     - [ ] ioc.md
+    - [ ] templates.md
 
 - wizarot
     - [x] database.md
