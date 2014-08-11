@@ -36,7 +36,7 @@ Composer 安装完成后，下载[最新版Laravel框架](https://github.com/lar
 
 Laravel 框架对系统环境有如下要求：
 
-- PHP >= 5.3.7
+- PHP >= 5.4
 - MCrypt PHP 扩展
 
 从 PHP 5.5 版本开始，针对某些操作系统的安装包需要你自己手工安装 PHP 的 JSON 扩展模块。如果你使用的是 Ubuntu，可以通过,  `apt-get install php5-json` 命令直接安装。
