@@ -35,7 +35,7 @@ If you want to update the Laravel framework, you may issue the `php composer.pha
 
 The Laravel framework has a few system requirements:
 
-- PHP >= 5.3.7
+- PHP >= 5.4
 - MCrypt PHP Extension
 
 As of PHP 5.5, some OS distributions may require you to manually install the PHP JSON extension. When using Ubuntu, this can be done via `apt-get install php5-json`.
@@ -51,7 +51,7 @@ Once Laravel is installed, you should also [configure your local environment](/d
 
 <a name="permissions"></a>
 ### Permissions
-Laravel may require one set of permissions to be configured: folders within app/storage require write access by the web server.
+Laravel may require one set of permissions to be configured: folders within `app/storage` require write access by the web server.
 
 <a name="paths"></a>
 ### Paths

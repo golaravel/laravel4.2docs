@@ -3,7 +3,7 @@
 - [Introduction](#introduction)
 - [Included Software](#included-software)
 - [Installation & Setup](#installation-and-setup)
-- [Daily Usage](#general-usage)
+- [Daily Usage](#daily-usage)
 - [Ports](#ports)
 
 <a name="introduction"></a>
@@ -14,6 +14,8 @@ Laravel strives to make the entire PHP development experience delightful, includ
 Laravel Homestead is an official, pre-packaged Vagrant "box" that provides you a wonderful development environment without requiring you to install PHP, a web server, and any other server software on your local machine. No more worrying about messing up your operating system! Vagrant boxes are completely disposable. If something goes wrong, you can destroy and re-create the box in minutes!
 
 Homestead runs on any Windows, Mac, and Linux, and includes the Nginx web server, PHP 5.5, MySQL, Postgres, Redis, Memcached and all of the other goodies you need to develop amazing Laravel applications.
+
+Homestead is currently built and tested using Vagrant 1.6.
 
 <a name="included-software"></a>
 ## Included Software
@@ -67,7 +69,7 @@ The `folders` property of the `Homestead.yaml` file lists all of the folders you
 
 ### Configure Your Nginx Sites
 
-Not familiar with Nginx? No problem. The `sites` property allows you to easily map a "domain" to a folder on your Homestead environment. A sample site configuration is included in the `Homestead.yaml` file. Again, you may add as many sites to your Homestead environemnt as necessary.Homestead can serve as a convenient, virtualized environemnt for every Laravel project you are working on!
+Not familiar with Nginx? No problem. The `sites` property allows you to easily map a "domain" to a folder on your Homestead environment. A sample site configuration is included in the `Homestead.yaml` file. Again, you may add as many sites to your Homestead environment as necessary. Homestead can serve as a convenient, virtualized environment for every Laravel project you are working on!
 
 ### Bash Aliases
 
@@ -108,7 +110,7 @@ To connect to your MySQL or Postgres database from your main machine via Navicat
 
 ### Adding Additional Sites
 
-Once your Homestead environment is provisioned and running, you may want to add additional Nginx sites for your Laravel applications. You can run as many Laravel installation as you wish on a single Homestead environment. There are two ways to do this. First, you may simply add the sites to your `Homestead.yaml` file, `vagrant destroy` the box, and then `vagrant up` again.
+Once your Homestead environment is provisioned and running, you may want to add additional Nginx sites for your Laravel applications. You can run as many Laravel installations as you wish on a single Homestead environment. There are two ways to do this: First, you may simply add the sites to your `Homestead.yaml` file and then run `vagrant provision`.
 
 Alternatively, you may use the `serve` script that is available on your Homestead environment. To use the `serve` script, SSH into your Homestead environment and run the following command:
 
