@@ -31,8 +31,8 @@
 
 - mpandar
     - [x] packages.md
-    - [ ] facades.md
-    - [ ] ioc.md
+    - [x] facades.md
+    - [x] ioc.md
     - [ ] templates.md
 
 - wizarot
