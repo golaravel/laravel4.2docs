@@ -44,7 +44,8 @@
     - [ ] billing.md
 
 - jabez128 
-    - [ ] controllers.md
+    - [x] controllers.md
+    - [ ] helpers.md
 
 ## 版权协议
 
