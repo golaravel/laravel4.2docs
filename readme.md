@@ -37,10 +37,11 @@
 
 - wizarot
     - [x] database.md
-    - [ ] redis.md
+    - [x] redis.md
+    - [x] migrations.md
 
 - uephp
-    - [ ] cache.md
+    - [x] cache.md
     - [ ] billing.md
 
 - jabez128 
