@@ -24,7 +24,7 @@
     - [有用的工具函数](/docs/helpers)
     - [IoC 容器](/docs/ioc)
     - [本地化](/docs/localization)
-    - [Mail](/docs/mail)
+    - [邮件](/docs/mail)
     - [扩展包开发](/docs/packages)
     - [分页](/docs/pagination)
     - [队列](/docs/queues)

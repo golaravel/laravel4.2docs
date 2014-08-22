@@ -38,32 +38,33 @@ Typically, you may use a web server such as Apache or Nginx to serve your Larave
 	php artisan serve
 
 <a name="directories"></a>
-### Directory Structure
+### 目录结构
 
-After installing the framework, take a glance around the project to familiarize yourself with the directory structure. The `app` directory contains folders such as `views`, `controllers`, and `models`. Most of your application's code will reside somewhere in this directory. You may also wish to explore the `app/config` directory and the configuration options that are available to you.
+安装完框架后，你需要熟悉一下该项目的目录结构。`app` 文件夹包含了一些例如 `views` ，`controllers` 和 `models` 目录。 程序中大部分代码将要存放这些目录下。你也可以查看一下 `app/config` 文件夹里一些配置项目。
 
 <a name="routing"></a>
-## Routing
+## 路由
 
-To get started, let's create our first route. In Laravel, the simplest route is a route to a Closure. Pop open the `app/routes.php` file and add the following route to the bottom of the file:
+我们开始创建我们第一个路由。在 Laravel，简单路由的方法是闭包。打开 `app/routes.php` 文件加入如下代码:
 
 	Route::get('users', function()
 	{
 		return 'Users!';
 	});
 
-Now, if you hit the `/users` route in your web browser, you should see `Users!` displayed as the response. Great! You've just created your first route.
+现在，你在 web 浏览器输入 `/users`，你应该会看到 `Users!` 输出。真棒！已经创建了你第一个路由。
 
-Routes can also be attached to controller classes. For example:
+路由也可以赋予控制器类。例如：
 
 	Route::get('users', 'UserController@getIndex');
 
-This route informs the framework that requests to the `/users` route should call the `getIndex` method on the `UserController` class. For more information on controller routing, check out the [controller documentation](/docs/controllers).
+该路由告知框架 `/users` 路由请求应该调用 `UserController` 类的 `getIndex` 方法。要查看更多关于路由控制器信息，查看 [控制器文档](/docs/controllers) 。
+
 
 <a name="creating-a-view"></a>
-## Creating A View
+## 创建视图
 
-Next, we'll create a simple view to display our user data. Views live in the `app/views` directory and contain the HTML of your application. We're going to place two new views in this directory: `layout.blade.php` and `users.blade.php`. First, let's create our `layout.blade.php` file:
+接下来，我们要创建视图来显示我们用户数据。视图以HTML代码存放在 `app/views` 文件夹。我们将存放两个视图文件到该文件夹：`layout.blade.php` 和 `users.blade.php`。首先，让我们先创建 `layout.blade.php` 文件：
 
 	<html>
 		<body>
@@ -73,7 +74,7 @@ Next, we'll create a simple view to display our user data. Views live in the `ap
 		</body>
 	</html>
 
-Next, we'll create our `users.blade.php` view:
+接着， 我们创建 `users.blade.php` 视图：
 
 	@extends('layout')
 
@@ -81,31 +82,32 @@ Next, we'll create our `users.blade.php` view:
 		Users!
 	@stop
 
-Some of this syntax probably looks quite strange to you. That's because we're using Laravel's templating system: Blade. Blade is very fast, because it is simply a handful of regular expressions that are run against your templates to compile them to pure PHP. Blade provides powerful functionality like template inheritance, as well as some syntax sugar on typical PHP control structures such as `if` and `for`. Check out the [Blade documentation](/docs/templates) for more details.
+这里的语法可能让你感到陌生。因为我们使用的是 Laravel 模板系统：Blade。Blade 非常快，因为仅使用了少量的正则表达式来为你的模板编译成原始PHP代码。Blade提供强大的功能，例如模板继承，还有一些常用的PHP控制结构语法糖，例如 `if` 和 `for`。 查看 [Blade 文档](/docs/templates) 了解更多。
 
-Now that we have our views, let's return it from our `/users` route. Instead of returning `Users!` from the route, return the view instead:
+现在我们有了我们视图，让我们返回 `/users` 路由。我们用视图来替代返回 `Users!`:
 
 	Route::get('users', function()
 	{
 		return View::make('users');
 	});
 
-Wonderful! Now you have setup a simple view that extends a layout. Next, let's start working on our database layer.
+漂亮！现在你成功创建了继承至layout的视图。接下来，让我们开始数据库层。
+
 
 <a name="creating-a-migration"></a>
-## Creating A Migration
+## 创建迁移
 
-To create a table to hold our data, we'll use the Laravel migration system. Migrations let you expressively define modifications to your database, and easily share them with the rest of your team.
+要创建表来保存我们数据，我们将使用 Laravel 迁移系统。迁移描述数据库的改变，这让分享给他们团队成员非常简单。
 
-First, let's configure a database connection. You may configure all of your database connections from the `app/config/database.php` file. By default, Laravel is configured to use MySQL, and you will need to supply connection credentials within the database configuration file. If you wish, you may change the `driver` option to `sqlite` and it will use the SQLite database included in the `app/database` directory.
+首先，我们配置数据库连接。你可以在 `app/config/database.php` 文件配置所有数据库连接信息。默认，Laravel 被配置为使用 SQLite，并且一个 SQLite 数据库存放在 `app/database` 目录。你可以将数据库配置文件的 `driver` 选项修改为 `mysql` 并且配置 `mysql` 连接信息。
 
-Next, to create the migration, we'll use the [Artisan CLI](/docs/artisan). From the root of your project, run the following from your terminal:
+接下来，要创建迁移，我们将使用 [Artisan CLI](/docs/artisan)。在项目根目录中，在终端中执行以下命令：
 
 	php artisan migrate:make create_users_table
 
-Next, find the generated migration file in the `app/database/migrations` folder. This file contains a class with two methods: `up` and `down`. In the `up` method, you should make the desired changes to your database tables, and in the `down` method you simply reverse them.
+然后，找到生成的迁移文件 `app/database/migrations` 目录。该文件包含了一个包含两个方法： `up` 和 `down` 的类。在 `up` 方法，你要指名数据库表的修改，在 `down` 方法中你只需要移除它。
 
-Let's define a migration that looks like this:
+让我们定义如下迁移：
 
 	public function up()
 	{
@@ -123,26 +125,26 @@ Let's define a migration that looks like this:
 		Schema::drop('users');
 	}
 
-Next, we can run our migrations from our terminal using the `migrate` command. Simply execute this command from the root of your project:
+然后，我们在项目根目录中使用终端运行 `migrate` 命令来执行迁移：
 
 	php artisan migrate
 
-If you wish to rollback a migration, you may issue the `migrate:rollback` command. Now that we have a database table, let's start pulling some data!
+如果你想回滚迁移，你可以执行 `migrate:rollback` 命令。现在我们已经有了数据库表，让我们让添加一些数据！
 
 <a name="eloquent-orm"></a>
 ## Eloquent ORM
 
-Laravel ships with a superb ORM: Eloquent. If you have used the Ruby on Rails framework, you will find Eloquent familiar, as it follows the ActiveRecord ORM style of database interaction.
+Laravel 提供非常棒的 ORM：Eloquent。如果你使用过 Ruby on Rails 框架，你会发现 Eloquent 很相似，因为它遵循数据库交互的 ActiveRecord ORM 风格。
 
-First, let's define a model. An Eloquent model can be used to query an associated database table, as well as represent a given row within that table. Don't worry, it will all make sense soon! Models are typically stored in the `app/models` directory. Let's define a `User.php` model in that directory like so:
+首先，让我们来定义个模型。ELoquent 模型可以用来查询相关数据表，以及表内的某一行。别着急，我们很快会谈及！模型通常存放在 `app/models` 目录。让我们在该目录定义个 `User.php` 模型，如：
 
 	class User extends Eloquent {}
 
-Note that we do not have to tell Eloquent which table to use. Eloquent has a variety of conventions, one of which is to use the plural form of the model name as the model's database table. Convenient!
+注意我们并没有告诉 Eloquent 使用哪个表。Eloquent 有多种约定， 一个是使用模型的复数形式作为模型的数据库表。非常方便！
 
-Using your preferred database administration tool, insert a few rows into your `users` table, and we'll use Eloquent to retrieve them and pass them to our view.
+使用你喜欢的数据库管理工具，插入几行数据到 `users` 表，我们将使用 Eloquent 取得它们并传递到视图中。
 
-Now let's modify our `/users` route to look like this:
+现在我们修改我们 `/users` 路由如下：
 
 	Route::get('users', function()
 	{
@@ -151,14 +153,14 @@ Now let's modify our `/users` route to look like this:
 		return View::make('users')->with('users', $users);
 	});
 
-Let's walk through this route. First, the `all` method on the `User` model will retrieve all of the rows in the `users` table. Next, we're passing these records to the view via the `with` method. The `with` method accepts a key and a value, and is used to make a piece of data available to a view.
+让我们来看看该路由。首先，`User` 模型的 `all` 方法将会从 `users` 表中取得所有记录。接下来，我们通过 `with` 方法将这些记录传递到视图。`with` 方法接受一个键和一个值，那么该值就可以在视图中使用了。
 
-Awesome. Now we're ready to display the users in our view!
+激动啊。现在我们准备将用户显示在我们视图！
 
 <a name="displaying-data"></a>
-## Displaying Data
+## 显示数据
 
-Now that we have made the `users` available to our view, we can display them like so:
+现在我们视图中已经可以访问 `users` 类，我们可以如下显示它们：
 
 	@extends('layout')
 
@@ -168,6 +170,6 @@ Now that we have made the `users` available to our view, we can display them lik
 		@endforeach
 	@stop
 
-You may be wondering where to find our `echo` statements. When using Blade, you may echo data by surrounding it with double curly braces. It's a cinch. Now, you should be able to hit the `/users` route and see the names of your users displayed in the response.
+你可以发现没有找到 `echo` 语句。当使用 Blade 时，你可以使用两个花括号来输出数据。非常简单，你现在应该可以通过 `/users` 路由来查看到用户姓名作为响应输出。
 
-This is just the beginning. In this tutorial, you've seen the very basics of Laravel, but there are so many more exciting things to learn. Keep reading through the documentation and dig deeper into the powerful features available to you in [Eloquent](/docs/eloquent) and [Blade](/docs/templates). Or, maybe you're more interested in [Queues](/docs/queues) and [Unit Testing](/docs/testing). Then again, maybe you want to flex your architecture muscles with the [IoC Container](/docs/ioc). The choice is yours!
+这仅仅是开始。在本系列教程中，你已经了解了 Laravel 基础部分，但是还有更让人兴奋的东西要学。继续阅读该文档并且深入[Eloquent](/docs/eloquent)和[Blade](/docs/templates)这些强大的特性。或者你对[队列](/docs/queues) 和 [单元测试](/docs/testing) 感兴趣。或许是你想了解[IoC Container](/docs/ioc), 选择权在于你!

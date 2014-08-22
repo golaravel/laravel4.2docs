@@ -1,7 +1,7 @@
 # 版本说明
 
 - [Laravel 4.2]（#laravel-4.2）
-- [Laravel 4.1]（#laravel-4.1）
+- [Laravel 4.1](#laravel-4.1)
 
 <a name="laravel-4.2"></a>
 ## Laravel 4.2
