@@ -31,20 +31,23 @@
 
 - mpandar
     - [x] packages.md
-    - [ ] facades.md
-    - [ ] ioc.md
+    - [x] facades.md
+    - [x] ioc.md
     - [ ] templates.md
 
 - wizarot
     - [x] database.md
-    - [ ] redis.md
+    - [x] redis.md
+    - [x] migrations.md
+    - [ ] security.md
 
 - uephp
-    - [ ] cache.md
+    - [x] cache.md
     - [ ] billing.md
 
 - jabez128 
-    - [ ] controllers.md
+    - [x] controllers.md
+    - [ ] helpers.md
 
 ## 版权协议
 
