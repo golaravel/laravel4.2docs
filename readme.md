@@ -24,7 +24,7 @@
     - [ ] upgrade.md
     - [x] homestead.md
     - [x] lifecycle.md
-    - [ ] routing.md
+    - [x] routing.md
 
 - 成武
     - [x] configuration.md
