@@ -140,6 +140,11 @@ The `controller` method accepts two arguments. The first is the base URI the con
 		{
 			//
 		}
+		
+		public function anyLogin()
+		{
+			//
+		}
 
 	}
 
@@ -194,6 +199,23 @@ By default, all resource controller actions have a route name; however, you can 
 
 	Route::resource('photo', 'PhotoController',
 					array('names' => array('create' => 'photo.build')));
+
+#### Handling Nested Resource Controllers
+
+To "nest" resource controllers, use "dot" notation in your route declaration:
+
+	Route::resource('photos.comments', 'PhotoCommentController');
+
+This route will register a "nested" resource that may be accessed with URLs like the following: `photos/{photoResource}/comments/{commentResource}`.
+
+	class PhotoCommentController extends BaseController {
+
+		public function show($photoId, $commentId)
+		{
+			//
+		}
+
+	}
 
 #### Adding Additional Routes To Resource Controllers
 

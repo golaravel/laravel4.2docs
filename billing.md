@@ -10,12 +10,13 @@
 - [Resuming A Subscription](#resuming-a-subscription)
 - [Checking Subscription Status](#checking-subscription-status)
 - [Handling Failed Payments](#handling-failed-payments)
+- [Handling Other Stripe Webhooks](#handling-other-stripe-webhooks)
 - [Invoices](#invoices)
 
 <a name="introduction"></a>
 ## Introduction
 
-Laravel Cashier provides an expressive, fluent interface to [Stripe's](https://stripe.com) subscription billing services. It handles almost all of the boilerplate subscription billing code you are dreading writing. In addition to basic subscription management, Cashier can handle coupons, swapping subscription, subscription "quantites", cancellation grace periods, and even generate invoice PDFs.
+Laravel Cashier provides an expressive, fluent interface to [Stripe's](https://stripe.com) subscription billing services. It handles almost all of the boilerplate subscription billing code you are dreading writing. In addition to basic subscription management, Cashier can handle coupons, swapping subscription, subscription "quantities", cancellation grace periods, and even generate invoice PDFs.
 
 <a name="configuration"></a>
 ## Configuration
@@ -32,7 +33,7 @@ Next, register the `Laravel\Cashier\CashierServiceProvider` in your `app` config
 
 #### Migration
 
-Before using Cashier, we'll need to add several columns to your database. Don't worry, you can use the `cashier:table` Artisan command to create a migration to add the necessary column. Once the migration has been created, simply run the `migrate` command.
+Before using Cashier, we'll need to add several columns to your database. Don't worry, you can use the `cashier:table` Artisan command to create a migration to add the necessary column. For example, to add the column to the users table use `php artisan cashier:table users`. Once the migration has been created, simply run the `migrate` command.
 
 #### Model Setup
 
@@ -70,13 +71,23 @@ If you would like to apply a coupon when creating the subscription, you may use 
 	     ->withCoupon('code')
 	     ->create($creditCardToken);
 
-The `subscription` method will automatically create the Stripe subscription, as well as update your database with Stripe customer ID and other relevant billing information.
+The `subscription` method will automatically create the Stripe subscription, as well as update your database with Stripe customer ID and other relevant billing information. If your plan has a trial configured in Stripe, the trial end date will also automatically be set on the user record.
 
-If your plan has a trial period, make sure to set the trial end date on your model after subscribing:
+If your plan has a trial period that is **not** configured in Stripe, you must set the trial end date manually after subscribing:
 
 	$user->trial_ends_at = Carbon::now()->addDays(14);
 
 	$user->save();
+
+### Specifying Additional User Details
+
+If you would like to specify additional customer details, you may do so by passing them as second argument to the `create` method:
+
+	$user->subscription('monthly')->create($creditCardToken, [
+		'email' => $email, 'description' => 'Our First Customer'
+	]);
+
+To learn more about the additional fields supported by Stripe, check out Stripe's [documentation on customer creation](https://stripe.com/docs/api#create_customer).
 
 <a name="no-card-up-front"></a>
 ## No Card Up Front
@@ -110,12 +121,12 @@ Sometimes subscriptions are affected by "quantity". For example, your applicatio
 	$user->subscription()->increment();
 
 	// Add five to the subscription's current quantity...
-	$user->subscription()->increment(5)
+	$user->subscription()->increment(5);
 
 	$user->subscription->decrement();
 
 	// Subtract five to the subscription's current quantity...
-	$user->subscription()->decrement(5)
+	$user->subscription()->decrement(5);
 
 <a name="cancelling-a-subscription"></a>
 ## Cancelling A Subscription
@@ -183,6 +194,13 @@ The `everSubscribed` method may be used to determine if the user has ever subscr
 		//
 	}
 
+The `onPlan` method may be used to determine if the user is subscribed to a given plan based on its ID:
+
+	if ($user->onPlan('monthly'))
+	{
+		//
+	}
+
 <a name="handling-failed-payments"></a>
 ## Handling Failed Payments
 
@@ -192,16 +210,16 @@ What if a customer's credit card expires? No worries - Cashier includes a Webhoo
 
 That's it! Failed payments will be captured and handled by the controller. The controller will cancel the customer's subscription after three failed payment attempts. The `stripe/webhook` URI in this example is just for example. You will need to configure the URI in your Stripe settings.
 
-If you have additional Stripe webhook events you would like to handle, simply extend the Webhook controller:
+<a name="handling-other-stripe-webhooks"></a>
+## Handling Other Stripe Webhooks
+
+If you have additional Stripe webhook events you would like to handle, simply extend the Webhook controller. Your method names should correspond to Cashier's expected convention, specifically, methods should be prefixed with `handle` and the name of the Stripe webhook you wish to handle. For example, if you wish to handle the `invoice.payment_succeeded` webhook, you should add a `handleInvoicePaymentSucceeded` method to the controller.
 
 	class WebhookController extends Laravel\Cashier\WebhookController {
 
-		public function handleWebhook()
+		public function handleInvoicePaymentSucceeded($payload)
 		{
-			// Handle other events...
-
-			// Fallback to failed payment check...
-			return parent::handleWebhook();
+			// Handle The Event
 		}
 
 	}

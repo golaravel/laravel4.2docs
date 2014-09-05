@@ -87,6 +87,7 @@ Command  | Description
 `$table->time('sunrise');`  |  TIME equivalent to the table
 `$table->timestamp('added_on');`  |  TIMESTAMP equivalent to the table
 `$table->timestamps();`  |  Adds **created\_at** and **updated\_at** columns
+`$table->rememberToken();`  |  Adds `remember_token` as VARCHAR(100) NULL
 `->nullable()`  |  Designate that the column allows NULL values
 `->default($value)`  |  Declare a default value for a column
 `->unsigned()`  |  Set INTEGER to UNSIGNED
@@ -123,7 +124,7 @@ To rename a column, you may use the `renameColumn` method on the Schema builder.
 
 	Schema::table('users', function($table)
 	{
-		$table->dropColumn('votes', 'avatar', 'location');
+		$table->dropColumn(array('votes', 'avatar', 'location'));
 	});
 
 <a name="checking-existence"></a>

@@ -114,6 +114,7 @@ Facades（一种设计模式，通常翻译为外观模式）提供了一个"sta
 
 下面你会找到所有的facade以及其包含的类。这是一个非常有用的工具，可以根据给定的facade快速定位到API文档。适用于[IoC 绑定](/docs/ioc) 的也同时给出了其key。
 
+
 Facade  |  Class  |  IoC Binding
 ------------- | ------------- | -------------
 App  |  [Illuminate\Foundation\Application](http://laravel.com/api/4.2/Illuminate/Foundation/Application.html)  | `app`
@@ -154,10 +155,9 @@ SSH  |  [Illuminate\Remote\RemoteManager](http://laravel.com/api/4.2/Illuminate/
 SSH (Instance)  |  [Illuminate\Remote\Connection](http://laravel.com/api/4.2/Illuminate/Remote/Connection.html)  |
 URL  |  [Illuminate\Routing\UrlGenerator](http://laravel.com/api/4.2/Illuminate/Routing/UrlGenerator.html)  |  `url`
 Validator  |  [Illuminate\Validation\Factory](http://laravel.com/api/4.2/Illuminate/Validation/Factory.html)  |  `validator`
-Validator (Instance)  |  [Illuminate\Validation\Validator](http://laravel.com/api/4.2/Illuminate/Validation/Validator.html)
+Validator (Instance)  |  [Illuminate\Validation\Validator](http://laravel.com/api/4.2/Illuminate/Validation/Validator.html) |
 View  |  [Illuminate\View\Factory](http://laravel.com/api/4.2/Illuminate/View/Factory.html)  |  `view`
 View (Instance)  |  [Illuminate\View\View](http://laravel.com/api/4.2/Illuminate/View/View.html)  |
-
 
 
 译者：mpandar（马胜盼）

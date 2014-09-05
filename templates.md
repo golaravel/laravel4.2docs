@@ -129,6 +129,12 @@ If you don't want the data to be escaped, you may use double curly-braces:
 		<p>This is user {{ $user->id }}</p>
 	@endforeach
 
+	@forelse($users as $user)
+	  	<li>{{ $user->name }}</li>
+	@empty
+	  	<p>No users</p>
+	@endforelse
+
 	@while (true)
 		<p>I'm looping forever.</p>
 	@endwhile
@@ -176,5 +182,5 @@ The following example creates a `@datetime($var)` directive which simply calls `
 	{
 		$pattern = $compiler->createMatcher('datetime');
 
-		return preg_replace($pattern, '$1<?php echo $2->format('m/d/Y H:i'); ?>', $view);
+		return preg_replace($pattern, '$1<?php echo $2->format(\'m/d/Y H:i\'); ?>', $view);
 	});

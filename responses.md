@@ -133,6 +133,15 @@ The sub-view can then be rendered from the parent view:
 		</body>
 	</html>
 
+#### Determining If A View Exists
+
+If you need to check if a view exists, use the `View::exists` method:
+
+	if (View::exists('emails.customer'))
+	{
+		//
+	}
+
 <a name="view-composers"></a>
 ## View Composers
 
@@ -182,7 +191,7 @@ You may use the `composers` method to register a group of composers at the same 
 
 ### View Creators
 
-View **creators** work almost exactly like view composers; however, they are fired immediately when the view is instantiated. To register a view creator, simple use the `creator` method:
+View **creators** work almost exactly like view composers; however, they are fired immediately when the view is instantiated. To register a view creator, simply use the `creator` method:
 
 	View::creator('profile', function($view)
 	{

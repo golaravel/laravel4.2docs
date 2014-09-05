@@ -162,6 +162,7 @@ Below is a list of all available validation rules and their function:
 - [Array](#rule-array)
 - [Before (Date)](#rule-before)
 - [Between](#rule-between)
+- [Boolean](#rule-boolean)
 - [Confirmed](#rule-confirmed)
 - [Date](#rule-date)
 - [Date Format](#rule-date-format)
@@ -188,6 +189,7 @@ Below is a list of all available validation rules and their function:
 - [Required Without All](#rule-required-without-all)
 - [Same](#rule-same)
 - [Size](#rule-size)
+- [Timezone](#rule-timezone)
 - [Unique (Database)](#rule-unique)
 - [URL](#rule-url)
 
@@ -265,6 +267,11 @@ The field under validation must be _numeric_ and must have an exact length of _v
 #### digits_between:_min_,_max_
 
 The field under validation must have a length between the given _min_ and _max_.
+
+<a name="rule-boolean"></a>
+#### boolean
+
+The field under validation must be able to be cast as a boolean. Accepted input are `true`, `false`, `1`, `0`, `"1"` and `"0"`.
 
 <a name="rule-email"></a>
 #### email
@@ -387,6 +394,11 @@ The given _field_ must match the field under validation.
 #### size:_value_
 
 The field under validation must have a size matching the given _value_. For string data, _value_ corresponds to the number of characters. For numeric data, _value_ corresponds to a given integer value. For files, _size_ corresponds to the file size in kilobytes.
+
+<a name="rule-timezone"></a>
+#### timezone
+
+The field under validation must be a valid timezone identifier according to the `timezone_identifiers_list` PHP function.
 
 <a name="rule-unique"></a>
 #### unique:_table_,_column_,_except_,_idColumn_

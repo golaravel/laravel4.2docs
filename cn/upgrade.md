@@ -20,6 +20,8 @@ Laravel 4.2需要PHP 5.4.0或更高版本。
 
 这个设置可以用来控制Laravel加密功能使用默认密钥。
 
+> **Note:** In Laravel 4.2, the default cipher is `MCRYPT_RIJNDAEL_128` (AES), which is considered to be the most secure cipher. Changing the cipher back to `MCRYPT_RIJNDAEL_256` is required to decrypt cookies/values that were encrypted in Laravel <= 4.1
+
 ### 软删除模型现在的使用特性
 
 如果你正在使用软删除模型，“softDeletes”属性已经被删除了。现在你应该使用“SoftDeletingTrait”属性，像下面这样：
@@ -40,6 +42,8 @@ Laravel 4.2需要PHP 5.4.0或更高版本。
 
 所有软删除操作的API保持不变。
 
+> **Note:** The `SoftDeletingTrait` can not be applied on a base model. It must be used on an actual model class.
+
 ### 重命名的视图/分页环境
 
 如果你直接的引用了“Illuminate\View\Environment”类或“Illuminate\Pagination\Environment”类，升级你的代码，用“Illuminate\View\Factory”和“Illuminate\Pagination\Factory”来替代。原来的两个类已经被重命名,以更好地反映其功能。
@@ -49,6 +53,12 @@ Laravel 4.2需要PHP 5.4.0或更高版本。
 如果你扩展了“Illuminate\Pagination\Presenter”类，它的抽象方法“getPageLinkWrapper”的签名已经被改变了，添加了“ref”参数：
 
 	abstract public function getPageLinkWrapper($url, $page, $rel = null);
+
+### Iron.Io Queue Encryption
+
+If you are using the Iron.io queue driver, you will need to add a new `encrypt` option to your queue configuration file:
+
+    'encrypt' => true
 
 <a name="upgrade-4.1.29"></a>
 ## 从小于等于4.1.x升级到4.1.29 
