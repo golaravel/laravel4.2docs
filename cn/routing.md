@@ -14,7 +14,7 @@
 <a name="basic-routing"></a>
 ## 基本路由
 
-应用中的大多数路都会定义在 `app/routes.php` 文件中。最简单的Laravel路由由URI和闭包回调函数组成。
+应用中的大多数路由都会定义在 `app/routes.php` 文件中。最简单的Laravel路由由URI和闭包回调函数组成。
 
 #### 基本 GET 路由
 
